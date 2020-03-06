@@ -19317,14 +19317,25 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
+/***/ "./resources/sass/login/style.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/login/style.scss ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nError: ENOENT: no such file or directory, open 'F:\\xampp\\htdocs\\se62\\resources\\sass\\app.scss'\n    at F:\\xampp\\htdocs\\se62\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at F:\\xampp\\htdocs\\se62\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at F:\\xampp\\htdocs\\se62\\node_modules\\loader-runner\\lib\\LoaderRunner.js:203:19\n    at F:\\xampp\\htdocs\\se62\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:75:11)");
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/main.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/main.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -19340,14 +19351,15 @@ throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/template/style.scss ***!
-  \**************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/main.scss ./resources/sass/login/style.scss ./resources/sass/template/style.scss ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! F:\xampp\htdocs\se62\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\main.scss */"./resources/sass/main.scss");
+__webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\login\style.scss */"./resources/sass/login/style.scss");
 module.exports = __webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\template\style.scss */"./resources/sass/template/style.scss");
 
 

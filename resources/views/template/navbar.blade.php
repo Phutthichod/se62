@@ -3,6 +3,7 @@
     <!-- Navbar content -->
   </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav-content">
+    @if (Session::has('permission'))
     <div class="tab"></div>
     <div class="nav-main">
         <div class="logo"><img src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div>
@@ -41,5 +42,7 @@
             </div>
           </li>
     </div>
-
+    @else
+    <strong class="ml-5 status-login">ล็อกอินเพื่อเข้าสู่ระบบ</strong>
+    @endif
     </nav>

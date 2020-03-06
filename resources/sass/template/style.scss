@@ -1,0 +1,72 @@
+
+@import "../color.scss";
+@import "../mixin.scss";
+
+.nav-top{
+    background-color: $color-green1;
+}
+.nav-main{
+    @include grid(1fr 2fr 10fr 4fr 2fr,1rem);
+    .logo>img{
+        width: 96px;
+    }
+    .title{
+        align-self: center;
+        font-size: 18px;
+        color: $color-green1;
+    }
+    .profile{
+        align-self: center;
+        justify-content: flex-end;
+        a{
+            color: $color-green1;
+        }
+    }
+    .search{
+        @include grid(3fr 1fr 1fr,1rem);
+        justify-self: center;
+    }
+    .menu{
+        @include grid(1fr 1fr 1fr,1rem);
+        .nav-icon{
+            @include grid(1fr,0);
+            i{
+               font-size: 30px;
+               justify-self: center;
+               align-self: center;
+               color: $color-green1;
+               margin-left: 6px;
+               transition: 0.3 ease-in-out;
+                sup{
+                    color: $color-number-alert;
+                    font-size: 20px;
+                }
+            }
+            i:hover{
+                color: yellowgreen;
+                cursor: pointer;
+            }
+
+            span{
+                font-size: 10px;
+                justify-self: center;
+                align-self: center;
+            }
+        }
+
+    }
+}
+li{
+    list-style: none;
+}
+.nav-content{
+    height: 70px;
+    padding: 0;
+}
+.font-weight-normal{
+    color: $color-green1;
+}
+.font-weight-normal:hover{
+    color: yellowgreen;
+}
+

@@ -3,7 +3,7 @@
     <!-- Navbar content -->
   </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav-content">
-    @if (Session::has('permission'))
+    @if (Session::has('username'))
     <div class="tab"></div>
     <div class="nav-main">
         <div class="logo"><img src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div>
@@ -38,11 +38,17 @@
                 <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
               </div>
               <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-              <a class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+              <a href="/logout" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
             </div>
           </li>
     </div>
     @else
-    <strong class="ml-5 status-login">ล็อกอินเพื่อเข้าสู่ระบบ</strong>
+    @if(isset($msg))
+        <strong class="ml-5 status-login-fail">{{$msg}}</strong>
+    @else
+        <strong class="ml-5 status-login">ล็อกอินเพื่อเข้าสู่ระบบ</strong>
+    @endif
+
+
     @endif
     </nav>

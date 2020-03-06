@@ -9,15 +9,15 @@
         <div class="logo">
             <img src="{{ asset('img/KU_SubLogo.png') }}" alt=""><strong>ระบบยืมคืนอุปกรณ์</strong>
         </div>
-
-        <form action="">
+        <form  method="post" action="/login">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="username">
+                <input type="text" class="form-control" name="username" placeholder="username">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="password">
+                <input type="password" class="form-control" name="password" placeholder="password">
             </div>
-            <button class="btn btn-success">Login</button>
+            <button class="btn btn-success" type="submit">Login</button>
 
         </form>
     </div>

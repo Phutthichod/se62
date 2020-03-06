@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+
+Route::get('/login',function () {
+    return view('login');
 });
-Route::get('/login',"LoginController@index");
+Route::post('/login',"LoginController@checkLogin");
+Route::get('/logout',"LoginController@logout");
+Route::middleware(['web', 'index'])->group(function () {
+    Route::get('/index',"IndexController@index");
+    Route::get('/', function () {
+        return view('index');
+    });
+});

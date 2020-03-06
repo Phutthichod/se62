@@ -100,3 +100,7 @@ li {
   color: #006765;
 }
 
+.status-login-fail {
+  color: red;
+}
+

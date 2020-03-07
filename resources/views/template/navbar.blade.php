@@ -2,8 +2,8 @@
 <nav class="navbar navbar-dark nav-top">
     <!-- Navbar content -->
   </nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light nav-content">
-    @if (Session::has('username'))
+<nav class="navbar navbar-expand-lg  nav-content nav-body">
+    @if (session()->has('member'))
     <div class="tab"></div>
     <div class="nav-main">
         <div class="logo"><img src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div>
@@ -14,30 +14,46 @@
                 <a class="btn btn-outline-success dropdown-toggle mr-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   หมวดหมู่
                 </a>
-
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="#" >Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </div>
-            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+        @if(session()->get('member')['permission'] != 1 || session()->get('permission') != 1)
         <div class="menu">
-            <div class="nav-icon"><i class="fas fa-shopping-basket"><sup class="rounded-circle">2</sup></i><span>ตะกร้า</span></div>
-            <div class="nav-icon"><i class="fas fa-clipboard-list"><sup>2</sup></i><span>รายการยืม</span></div>
-            <div class="nav-icon"><i class="fas fa-bell"><sup>2</sup></i><span>แจ้งเตือน</span></div>
+            <div class="nav-icon"><i class="fas fa-shopping-basket"><span class="badge badge-pill badge-danger">1</span></i><span>ตะกร้า</span></div>
+            <div class="nav-icon"><i class="fas fa-clipboard-list"><span class="badge badge-pill badge-danger">1</span></i><span>รายการยืม</span></div>
+            <div class="nav-icon"><i class="fas fa-bell"><span class="badge badge-pill badge-danger">1</span></i><span>แจ้งเตือน</span></div>
         </div>
+        @else
+        <div class="menu-2">
+            <div class="nav-icon"><i class="fas fa-toolbox"></i><span>อุปกรณ์</span></div>
+            <div class="nav-icon"><i class="fas fa-clipboard-list"></i><span>ประวัติ</span></div>
+            <div class="nav-icon"><i class="fas fa-exclamation"></i><span>ยืมเกิน</span></div>
+            <div class="nav-icon"><i class="fas fa-chart-bar"></i><span>สถิติ</span></div>
+            <div class="nav-icon"><i class="fas fa-bell"></i><span>แจ้งเตือน</span></div>
+        </div>
+        @endif
         <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown profile">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle ml-2" src="{{asset('img/profile.png')}}" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+            <img class="img-xs rounded-circle ml-2 img-profile"  src="{{asset(session()->get('member')['icon'])}}" alt="Profile image"> <span class="font-weight-normal">{{session()->get('member')['thainame']}}</span></a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
-                <img class="img-md rounded-circle" src="{{asset('img/profile.png')}}" alt="Profile image">
-                <p class="mb-1 mt-3">Allen Moreno</p>
-                <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                <img class="img-md rounded-circle img-profile" src="{{asset(session()->get('member')['icon'])}}" alt="Profile image">
+                <p class="mb-1 mt-3">{{session()->get('member')['thainame']}}</p>
+                <p class="font-weight-light text-muted mb-0">{{session()->get('member')['mail'][0]}}</p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+              <a class="dropdown-item" href="/profile"><i class="dropdown-item-icon icon-user text-primary" ></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+              @if(session()->get('member')['permission'] == 1)
+              @if(session()->get('permission') != 1)
+              <a class="dropdown-item" href="/index/1"><i class="dropdown-item-icon icon-user text-primary" ></i>AdminMode</a>
+              @else
+              <a class="dropdown-item" href="/index/0"><i class="dropdown-item-icon icon-user text-primary"></i>GeneralMode</a>
+              @endif
+              @endif
               <a href="/logout" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
             </div>
           </li>

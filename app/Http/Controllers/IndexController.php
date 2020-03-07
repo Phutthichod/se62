@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
 class IndexController extends Controller
 {
     public function __construct(){
         // $this->middleware('check.permission');
     }
-    function index(){
+    function index(Request $req){
 
-
-         return view("index");
+        // print_r(dd(session()->get('member'))));
+         if(request()->route('id')==1){
+            session()->put('permission',1);
+         }else{
+            session()->put('permission',0);
+         }
+         return redirect('/');
     }
 }

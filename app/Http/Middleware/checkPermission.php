@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Session;
 class checkPermission
 {
     /**
@@ -15,7 +14,7 @@ class checkPermission
      */
     public function handle($request, Closure $next)
     {
-        if(Session::has('username')){
+        if(session()->has('member')){
             // Session::put("req",$request);
             return $next($request);
         }

@@ -1,33 +1,8 @@
 
 @import "../color.scss";
 @import "../mixin.scss";
-
-.nav-top{
-    background-color: $color-green1;
-}
-.nav-main{
-    @include grid(1fr 2fr 10fr 4fr 2fr,1rem);
-    .logo>img{
-        width: 96px;
-    }
-    .title{
-        align-self: center;
-        font-size: 18px;
-        color: $color-green1;
-    }
-    .profile{
-        align-self: center;
-        justify-content: flex-end;
-        a{
-            color: $color-green1;
-        }
-    }
-    .search{
-        @include grid(3fr 1fr 1fr,1rem);
-        justify-self: center;
-    }
-    .menu{
-        @include grid(1fr 1fr 1fr,1rem);
+@mixin menu($grid-main){
+    @include grid($grid-main,1rem);
         .nav-icon{
             @include grid(1fr,0);
             i{
@@ -52,8 +27,41 @@
                 justify-self: center;
                 align-self: center;
             }
-        }
+    }
+}
+.nav-top{
+    background-color: $color-green1;;
+}
+.nav-body{
+    background-color: $color-nav;
+}
+.nav-main{
 
+    @include grid(1fr 2fr 10fr 4fr 2fr,1rem);
+    .logo>img{
+        width: 90px;
+    }
+    .title{
+        align-self: center;
+        font-size: 18px;
+        color: $color-green1;
+    }
+    .profile{
+        align-self: center;
+        justify-content: flex-end;
+        a{
+            color: $color-green1;
+        }
+    }
+    .search{
+        @include grid(3fr 1fr 1fr,1rem);
+        justify-self: center;
+    }
+    .menu{
+        @include menu(1fr 1fr 1fr);
+    }
+    .menu-2{
+        @include menu(repeat(5,1fr));
     }
 }
 li{
@@ -74,5 +82,8 @@ li{
 }
 .status-login-fail{
     color: red;
+}
+.img-profile{
+    width: 70px;
 }
 

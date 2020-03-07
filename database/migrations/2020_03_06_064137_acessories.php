@@ -31,6 +31,11 @@ class Acessories extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::table('accessories', function(Blueprint $table){
+            $table->dropForeign(['type_id']);
+        });
         Schema::dropIfExists('accessories');
+        Schema::enableForeignKeyConstraints();
     }
 }

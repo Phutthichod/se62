@@ -1,4 +1,6 @@
-//
-h1{
-    color: red;
+@import "color.scss";
+@import "mixin.scss";
+
+body{
+    background-color: $color-body;
 }

@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/login',function () {
-    return view('login');
-});
+Route::get('/login',"LoginController@Index");
 Route::post('/login',"LoginController@checkLogin");
 Route::get('/logout',"LoginController@logout");
 Route::middleware(['web', 'index'])->group(function () {
@@ -24,4 +22,6 @@ Route::middleware(['web', 'index'])->group(function () {
     Route::get('/', function () {
         return view('index');
     });
+    Route::get('/profile',"ShowProfile@index");
+    Route::get('/index/{id}',"IndexController@index"); // change Mode (general,admin)
 });

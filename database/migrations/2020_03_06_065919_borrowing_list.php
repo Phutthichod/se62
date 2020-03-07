@@ -13,6 +13,7 @@ class BorrowingList extends Migration
      */
     public function up()
     {
+
         if (Schema::hasTable('users')) {
             Schema::create('borrowing_list', function (Blueprint $table) {
                 $table->id();
@@ -33,6 +34,11 @@ class BorrowingList extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::table('borrowing_list', function(Blueprint $table){
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('borrowing_list');
+        Schema::enableForeignKeyConstraints();
     }
 }

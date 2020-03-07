@@ -16,8 +16,14 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->unsignedBigInteger('ku_id');
-            $table->string('email')->unique();
+            $table->string('firstName',50);
+            $table->string('lastName',50);
+            $table->string('department',50);
+            $table->string('thainame',100);
+            $table->string('faculty',50);
+            $table->string('email2')->unique();
+            $table->string('email1')->unique();
+            $table->string('icon',15);
             $table->enum('permission', ['Admin', 'User','Teacher','Other']);
         });
     }

@@ -23,6 +23,7 @@ Route::middleware(['web', 'index'])->group(function () {
         return view('index');
     });
     Route::get('/profile',"ShowProfile@index");
-    Route::post('/profile',"ShowProfile@updateIcon");
+    Route::post('/profile/updateIcon',"ShowProfile@updateIcon");
+    Route::post('/profile/updateEmail',"ShowProfile@updateEmail");
     Route::get('/index/{id}',"IndexController@index"); // change Mode (general,admin)
 });

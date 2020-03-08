@@ -46,7 +46,7 @@
         }
     }
     .show-profile-detail{
-        @include grid(4fr 7fr,1rem);
+        @include grid(3fr 4fr 1fr,1rem);
         span{
             margin: 0px;
             justify-self: flex-start;
@@ -56,6 +56,10 @@
             margin-left: 15px;
             justify-self: flex-start;
         }
+        .manage-mail{
+            @include grid(1fr 1fr,1rem);
+        }
+
 
     }
 

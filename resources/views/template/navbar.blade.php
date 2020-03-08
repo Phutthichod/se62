@@ -1,6 +1,5 @@
 
 <nav class="navbar navbar-dark nav-top">
-    <!-- Navbar content -->
   </nav>
 <nav class="navbar navbar-expand-lg  nav-content nav-body">
     @if (session()->has('member'))
@@ -22,11 +21,12 @@
               </div>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        @if(session()->get('member')['permission'] != 1 || session()->get('permission') != 1)
+
+        @if(session()->get('member')['Admin'] != 1 || session()->get('permission') != 1)
         <div class="menu">
-            <div class="nav-icon"><i class="fas fa-shopping-basket"><span class="badge badge-pill badge-danger">1</span></i><span>ตะกร้า</span></div>
-            <div class="nav-icon"><i class="fas fa-clipboard-list"><span class="badge badge-pill badge-danger">1</span></i><span>รายการยืม</span></div>
-            <div class="nav-icon"><i class="fas fa-bell"><span class="badge badge-pill badge-danger">1</span></i><span>แจ้งเตือน</span></div>
+            <div class="nav-icon"><i class="fas fa-shopping-basket"><sup><span class="badge badge-pill badge-danger">1</></sup></i><span>ตะกร้า</span></div>
+            <div class="nav-icon"><i class="fas fa-clipboard-list"><sup><span class="badge badge-pill badge-danger">1</span></sup></i><span>รายการยืม</span></div>
+            <div class="nav-icon"><i class="fas fa-bell"><sup><span class="badge badge-pill badge-danger">1</span></sup></i><span>แจ้งเตือน</span></div>
         </div>
         @else
         <div class="menu-2">
@@ -39,15 +39,15 @@
         @endif
         <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown profile">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-            <img class="img-xs rounded-circle ml-2 img-profile"  src="{{asset(session()->get('member')['icon'])}}" alt="Profile image"> <span class="font-weight-normal">{{session()->get('member')['thainame']}}</span></a>
+            <img class="img-xs rounded-circle ml-2 img-profile"  src="{{asset(session()->get('icon'))}}" alt="Profile image"> <span class="font-weight-normal">{{session()->get('member')['thainame']}}</span></a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
-                <img class="img-md rounded-circle img-profile" src="{{asset(session()->get('member')['icon'])}}" alt="Profile image">
+                <img class="img-md rounded-circle img-profile" src="{{asset(session()->get('icon'))}}" alt="Profile image">
                 <p class="mb-1 mt-3">{{session()->get('member')['thainame']}}</p>
                 <p class="font-weight-light text-muted mb-0">{{session()->get('member')['mail'][0]}}</p>
               </div>
-              <a class="dropdown-item" href="/profile"><i class="dropdown-item-icon icon-user text-primary" ></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-              @if(session()->get('member')['permission'] == 1)
+              <a class="dropdown-item" href="/profile"><i class="dropdown-item-icon icon-user text-primary" ></i> My Profile <sup><span class="badge badge-pill badge-danger">1</span></sup></a>
+              @if(session()->get('member')['Admin'] == 1)
               @if(session()->get('permission') != 1)
               <a class="dropdown-item" href="/index/1"><i class="dropdown-item-icon icon-user text-primary" ></i>AdminMode</a>
               @else

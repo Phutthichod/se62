@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     protected $table = "users";
+    public $timestamps = false;
     private $username;
     private $firstName;
     private $lastName;
@@ -101,7 +102,7 @@ class Member extends Model
         $this->icon = $icon;
     }
     public function setIsAdmin($permission){
-        $this->permission = $permission;
+        $this->isAdmin = $permission;
     }
 
 

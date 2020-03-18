@@ -15,10 +15,10 @@ class Acessories extends Migration
     {
         Schema::create('accessories', function (Blueprint $table) {
             $table->id();
-            $table->string('access_key');
+            $table->string('access_key')->nullable();
             $table->string('name');
-            $table->string('description');
-            $table->string('img');
+            $table->string('description')->nullable();
+            $table->string('icon')->default("img/avatar.png");
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('catagories');
         });

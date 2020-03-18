@@ -13,7 +13,7 @@ class BorrowingListItem extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('accessories')&&Schema::hasTable('borrowing_list')) {
+        if (Schema::hasTable('accessories')&&Schema::hasTable('borrowing_list')&&Schema::hasTable('icon')) {
             //
             Schema::create('borrowing_list_item', function (Blueprint $table) {
                 $table->id();

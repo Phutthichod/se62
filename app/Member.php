@@ -11,13 +11,15 @@ class Member extends Model
     private $username;
     private $firstName;
     private $lastName;
-    private $mail = array();
+    private $mail1;
+    private $mail2 = null;
     private $department;
     private $permission;
     private $thainame;
     private $faculty;
     private $icon = "img/avatar.png";
     private $isAdmin;
+
     function __construct($member_ku = null){
         if($member_ku!=null){
             $this->username = $member_ku['uid'][0];
@@ -38,14 +40,16 @@ class Member extends Model
             $this->faculty = $member_ku['faculty'][0];
             $member = Member::where('username',$member_ku['uid'][0])->get();
             if(count($member) == 0){
-                $this->mail[] = $member_ku['google-mail'][0];
+                $this->mail1 = $member_ku['google-mail'][0];
 
                 $result = Member::insert(
-                    ['username' => $this->username, 'thainame' => $this->thainame,'email1'=>$this->mail[0],'permission'=>$this->permission]
+                    ['username' => $this->username, 'thainame' => $this->thainame,'email1'=>$this->mail1,'permission'=>$this->permission]
                 );
             }else{
                 $result = (json_decode(json_encode($member), true));
-                array_push ($this->mail,$result[0]['email1'],$result[0]['email2']);
+                // array_push ($this->mail,$result[0]['email1'],$result[0]['email2']);
+                $this->mail1 = $result[0]['email1'];
+                $this->mail2 = $result[0]['email2'];
                 if($result[0]['icon']!=null) $this->icon = $result[0]['icon'];
                 $this->isAdmin = $result[0]['isAdmin'];
             }
@@ -74,8 +78,11 @@ class Member extends Model
     public function getLastName(){
         return $this->lastname;
     }
-    public function getMail(){
-        return $this->mail;
+    public function getMail1(){
+        return $this->mail1;
+    }
+    public function getMail2(){
+        return $this->mail2;
     }
     public function getPermission(){
         return $this->permission;

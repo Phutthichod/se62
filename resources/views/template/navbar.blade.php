@@ -21,7 +21,6 @@
               </div>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-
         @if(session()->get('member')['Admin'] != 1 || session()->get('permission') != 1)
         <div class="menu">
             <div class="nav-icon"><i class="fas fa-shopping-basket"><sup><span class="badge badge-pill badge-danger">1</></sup></i><span>ตะกร้า</span></div>
@@ -44,7 +43,7 @@
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle img-profile" src="{{asset(session()->get('icon'))}}" alt="Profile image">
                 <p class="mb-1 mt-3">{{session()->get('member')['thainame']}}</p>
-                <p class="font-weight-light text-muted mb-0">{{session()->get('member')['mail'][0]}}</p>
+                <p class="font-weight-light text-muted mb-0">{{session()->get('member')['mail1']}}</p>
               </div>
               <a class="dropdown-item" href="/profile"><i class="dropdown-item-icon icon-user text-primary" ></i> My Profile <sup><span class="badge badge-pill badge-danger">1</span></sup></a>
               @if(session()->get('member')['Admin'] == 1)

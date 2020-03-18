@@ -46,9 +46,9 @@
             <div class="card-body">
                 <div class="show-profile-detail show-mail">
                     @if(session()->get('mail2') == null)
-                        {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('member')['mail'][1],"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
+                        {{showDetail("อีเมล์",session()->get('member')['mail1'],"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
                     @else
-                        {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('member')['mail'][1])}}
+                        {{showDetail("อีเมล์",session()->get('member')['mail1'],null)}}
                         <?php $mail2 =  session()->get("mail2")?>
                         <?php showDetail("อีเมล์",'<input type="email" name="mail-update" class="form-control" disabled value='.$mail2.' />',"<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-danger delete-mail'>ลบ</button></div>");?>
                     @endif
@@ -135,7 +135,7 @@
                },
                success:function(data) {
                   console.log(data)
-                  location.reload();
+                //   location.reload();
                },
             error: function(data) {
                 console.log(data);

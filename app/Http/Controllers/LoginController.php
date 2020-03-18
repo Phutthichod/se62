@@ -19,10 +19,10 @@ class LoginController extends Controller
             if($member!=null){
                 // print_r(dd($arr));
                 session()->put("member", ['username'=>$member->getUsername(),'thainame'=>$member->getThainame(),'permission'=>$member->getIsAdmin(),
-                'mail'=>$member->getMail(),'firstname'=>$member->getFirstName(),'lastname'=>$member->getLastName()
+                'mail1'=>$member->getMail1(),'mail2'=>$member->getMail2(),'firstname'=>$member->getFirstName(),'lastname'=>$member->getLastName()
                 ,'permission'=>$member->getPermission(),'faculty'=>$member->getFaculty(),'department'=>$member->getDepartment(),'Admin'=>$member->getIsAdmin()]);
                 session()->put("icon",$member->getIcon());
-                session()->put("mail2",$member->getMail()[1]);
+                session()->put("mail2",$member->getMail2());
                 if($member->getIsAdmin() == 1)
                     session()->put("permission",1);
                 else session()->put("permission",0);

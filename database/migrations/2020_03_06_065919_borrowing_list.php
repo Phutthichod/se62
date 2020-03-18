@@ -18,10 +18,13 @@ class BorrowingList extends Migration
             Schema::create('borrowing_list', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('user_id');
-                $table->string('teacher_username')->nullable();
+                $table->string('teacher_name')->nullable();
                 $table->string('project_name')->nullable();
                 $table->string('description')->nullable();
-                $table->integer('period');
+                $table->enum('status',['รอนุมัติ','รอรับ','ยกเลิก','อยู่ระว่างยืม','คืนแล้ว']);
+                $table->dateTime('update');
+                $table->dateTime('date_borrow');
+                $table->integer('period')->default(0);
                 $table->foreign('user_id')->references('id')->on('users');
             });
         }

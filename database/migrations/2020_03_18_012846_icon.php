@@ -13,7 +13,7 @@ class Icon extends Migration
      */
     public function up()
     {
-        Schema::create('borrowing_list_item', function (Blueprint $table) {
+        Schema::create('icon', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("accessories_id")->nullable();
             $table->unsignedBigInteger("catagories_id")->nullable();

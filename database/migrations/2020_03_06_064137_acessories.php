@@ -19,8 +19,8 @@ class Acessories extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('icon')->default("img/avatar.png");
-            $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('catagories');
+            $table->unsignedBigInteger('catagories_id');
+            $table->foreign('catagories_id')->references('id')->on('catagories');
         });
     }
 
@@ -33,7 +33,7 @@ class Acessories extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::table('accessories', function(Blueprint $table){
-            $table->dropForeign(['type_id']);
+            $table->dropForeign(['catagories_id']);
         });
         Schema::dropIfExists('accessories');
         Schema::enableForeignKeyConstraints();

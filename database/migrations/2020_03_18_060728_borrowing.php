@@ -15,7 +15,7 @@ class BorrowingListItem extends Migration
     {
         if (Schema::hasTable('accessories')&&Schema::hasTable('borrowing_list')&&Schema::hasTable('icon')) {
             //
-            Schema::create('borrowing_list_item', function (Blueprint $table) {
+            Schema::create('borrowing', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('access_id');
                 $table->unsignedBigInteger('borrowing_list_id');

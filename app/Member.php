@@ -9,9 +9,13 @@ class Member extends Model
     protected $table = "users";
     public $timestamps = false;
 
-    public function borrowingList()
+    public function borrowingLists()
     {
-        return $this->belongsTo('App\Borrowing');
+        return $this->belongsTo('App\BorrowingList');
+    }
+    public function alerts()
+    {
+        return $this->belongsTo('App\Alert');
     }
 
     public static function memberKU($username,$password){

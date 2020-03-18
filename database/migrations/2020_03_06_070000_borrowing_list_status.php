@@ -21,7 +21,7 @@ class BorrowingListStatus extends Migration
                 $table->dateTime('datetime_end')->nullable();
                 $table->string('description')->nullable();
                 $table->enum('title',['รอนุมัติ','รอรับ','ยกเลิก','อยู่ระว่างยืม','คืนแล้ว']);
-                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list');
+                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list')->onDelete('cascade');
             });
         }
     }

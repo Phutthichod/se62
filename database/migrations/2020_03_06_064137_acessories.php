@@ -20,7 +20,7 @@ class Acessories extends Migration
             $table->string('description')->nullable();
             $table->string('icon')->default("img/avatar.png");
             $table->unsignedBigInteger('catagories_id');
-            $table->foreign('catagories_id')->references('id')->on('catagories');
+            $table->foreign('catagories_id')->references('id')->on('catagories')->onDelete('cascade');
         });
     }
 

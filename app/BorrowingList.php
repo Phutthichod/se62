@@ -11,4 +11,15 @@ class BorrowingList extends Model
     {
         return $this->hasOne('App\Member');
     }
+    function borrowingLists(){
+        return $this->belongsTo('App\Borrowing');
+    }
+    public function logs()
+    {
+        return $this->belongsTo('App\LogBorrowing');
+    }
+    public function alerts()
+    {
+        return $this->belongsTo('App\Alert');
+    }
 }

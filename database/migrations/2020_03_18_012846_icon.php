@@ -20,8 +20,8 @@ class Icon extends Migration
             $table->enum('type',[1,2])->default(1);
             $table->string('description',250)->default(null);
             $table->string('icon',15)->default("img/avatar.png");
-            $table->foreign('accessories_id')->references('id')->on('accessories');
-            $table->foreign('catagories_id')->references('id')->on('catagories');
+            $table->foreign('accessories_id')->references('id')->on('accessories')->onDelete('cascade');
+            $table->foreign('catagories_id')->references('id')->on('catagories')->onDelete('cascade');
         });
     }
 

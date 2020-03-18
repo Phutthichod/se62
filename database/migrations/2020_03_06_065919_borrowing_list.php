@@ -25,7 +25,7 @@ class BorrowingList extends Migration
                 $table->dateTime('update');
                 $table->dateTime('date_borrow');
                 $table->integer('period')->default(0);
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
         }
     }

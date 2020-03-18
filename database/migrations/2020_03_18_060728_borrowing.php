@@ -21,7 +21,7 @@ class BorrowingListItem extends Migration
                 $table->unsignedBigInteger('borrowing_list_id');
                 $table->integer('number');
                 $table->foreign('access_id')->references('id')->on('accessories');
-                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list');
+                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list')->onDelete('cascade');
             });
         }
 

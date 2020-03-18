@@ -9,7 +9,6 @@ class IndexController extends Controller
         // $this->middleware('check.permission');
     }
     function index(Request $req){
-
         // print_r(dd(session()->get('member'))));
         if(request()->route('id')!=null){
            if(request()->route('id')==1){

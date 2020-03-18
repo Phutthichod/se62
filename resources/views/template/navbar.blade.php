@@ -5,8 +5,8 @@
     @if (session()->has('member'))
     <div class="tab"></div>
     <div class="nav-main">
-        <a href="/"><div class="logo link-to-index"><img src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div></a>
-        <a href="/"><strong class="title link-to-index">ระบบยืมอุปกรณ์</strong></strong>
+        <a href="/"><div class="logo link-to-index"><img class="img-logo-ku" src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div></a>
+        <a href="/"><strong class="title link-to-index">ระบบยืมอุปกรณ์</strong></strong></a>
         <form class="form-inline search">
             <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
             <div class="dropdown show">
@@ -45,12 +45,12 @@
                 <p class="mb-1 mt-3">{{session()->get('member')['thainame']}}</p>
                 <p class="font-weight-light text-muted mb-0">{{session()->get('member')['mail1']}}</p>
               </div>
-              <a class="dropdown-item" href="/profile"><i class="dropdown-item-icon icon-user text-primary" ></i> My Profile <sup><span class="badge badge-pill badge-danger">1</span></sup></a>
+              <a class="dropdown-item" href="/profile/me"><i class="dropdown-item-icon icon-user text-primary" ></i> My Profile <sup><span class="badge badge-pill badge-danger">1</span></sup></a>
               @if(session()->get('member')['Admin'] == 1)
               @if(session()->get('permission') != 1)
-              <a class="dropdown-item" href="/index/1"><i class="dropdown-item-icon icon-user text-primary" ></i>AdminMode</a>
+              <a class="dropdown-item" href="/1"><i class="dropdown-item-icon icon-user text-primary" ></i>AdminMode</a>
               @else
-              <a class="dropdown-item" href="/index/0"><i class="dropdown-item-icon icon-user text-primary"></i>GeneralMode</a>
+              <a class="dropdown-item" href="/0"><i class="dropdown-item-icon icon-user text-primary"></i>GeneralMode</a>
               @endif
               @endif
               <a href="/logout" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>

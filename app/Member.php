@@ -46,6 +46,7 @@ class Member extends Model
                     $member->faculty = $member_ku['faculty'][0];
 
                     $member->email1 = $member_ku['google-mail'][0];
+                    $member->icon = "img/avatar.png";
                     $member->save();
 
                     $member = Member::find($member->id);

@@ -28,7 +28,7 @@
                     <span>แก้ไขรูป</span>
                     <div class="upload-img">
                         <input id='pic-logo' type='file' class='item-img file center-block'  accept=".jpg,.png" name='icon_insert' />
-                        <img id="profile-show" src="{{session()->get('icon')}}" alt="">
+                        <img id="profile-show" src="{{asset(session()->get('icon'))}}" alt="">
                     </div>
                 </div>
             </div>
@@ -135,13 +135,15 @@
                },
                success:function(data) {
                   console.log(data)
+                    $('.img-profile').attr('src',`{{asset("`+data+`")}}`)
+                    $('#profile-show').attr('src', `{{asset("`+data+`")}}`);
                 //   location.reload();
                },
             error: function(data) {
                 console.log(data);
             }
             });
-                $('#profile-show').attr('src', r);
+
             });
         $('#upload-demo').croppie('destroy')
         $('.card-show-crop').hide()

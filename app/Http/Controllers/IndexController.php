@@ -18,6 +18,6 @@ class IndexController extends Controller
             }
         }
 
-         return redirect('/');
+         return view('index');
     }
 }

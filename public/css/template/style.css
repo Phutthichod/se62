@@ -14,14 +14,15 @@
   justify-content: center;
 }
 
-.nav-main .logo > img {
-  width: 90px;
-}
-
-.nav-main .title {
+.nav-main a {
+  text-decoration: none;
   align-self: center;
   font-size: 18px;
   color: #006765;
+}
+
+.nav-main a .logo > img {
+  width: 90px;
 }
 
 .nav-main .profile {

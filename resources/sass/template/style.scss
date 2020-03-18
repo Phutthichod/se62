@@ -38,13 +38,18 @@
 .nav-main{
 
     @include grid(1fr 2fr 10fr 4fr 2fr,1rem);
-    .logo>img{
-        width: 90px;
-    }
-    .title{
+
+    a{
+        text-decoration: none;
         align-self: center;
         font-size: 18px;
         color: $color-green1;
+        // .title{
+
+        // }
+        .logo>img{
+            width: 90px;
+        }
     }
     .profile{
         align-self: center;

@@ -21,6 +21,7 @@ class LoginController extends Controller
                         'mail1'=>$member->email1,'mail2'=>$member->email2,'firstname'=>$member->firstName,'lastname'=>$member->lastName
                         ,'permission'=>$member->permission,'faculty'=>$member->faculty,'department'=>$member->department]);
                         session()->put("icon",$member->icon);
+                        print_r(session()->get("icon"));
                         session()->put("mail2",$member->email2);
                         if($member->isAdmin == 1)
                             session()->put("permission",1);

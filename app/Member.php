@@ -46,9 +46,10 @@ class Member extends Model
                     $member->faculty = $member_ku['faculty'][0];
 
                     $member->email1 = $member_ku['google-mail'][0];
-
                     $member->save();
-                }else $member = $member->first();
+
+                    $member = Member::find($member->id);
+                } else $member = $member->first();
                 return $member;
             }
         }

@@ -5,8 +5,8 @@
     @if (session()->has('member'))
     <div class="tab"></div>
     <div class="nav-main">
-        <div class="logo"><img src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div>
-        <strong class="title">ระบบยืมอุปกรณ์</strong>
+        <a href="/"><div class="logo link-to-index"><img src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div></a>
+        <a href="/"><strong class="title link-to-index">ระบบยืมอุปกรณ์</strong></strong>
         <form class="form-inline search">
             <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
             <div class="dropdown show">

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login',"MemberController@login");
 Route::post('/login',"MemberController@checkLogin");
 Route::get('/logout',"MemberController@logout");
+Route::get('/borrow',"BorrowingController@borrow");
 // Route::get('/soa', function () {
 //     return view('soa.index');
 // });

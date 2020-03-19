@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alert extends Model
 {
     protected $table = "alert";
+    public $timestamps = false;
     function member(){
         return $this->hasOne('App\Member','user_id');
     }

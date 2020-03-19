@@ -22,7 +22,7 @@ class MemberController extends Controller
         if($username!=null&&$password!=null){
             $member = Member::memberKU( $username,$password);
             if($member!=null){
-                session()->put("member", ['username'=>$member->username,'thainame'=>$member->thainame,'Admin'=>$member->isAdmin,
+                session()->put("member", ['id'=>$member->id,'username'=>$member->username,'thainame'=>$member->thainame,'Admin'=>$member->isAdmin,
                         'mail1'=>$member->email1,'mail2'=>$member->email2,'firstname'=>$member->firstName,'lastname'=>$member->lastName
                         ,'permission'=>$member->permission,'faculty'=>$member->faculty,'department'=>$member->department]);
                         session()->put("icon",$member->icon);

@@ -10,6 +10,6 @@ class Catagories extends Model
 
     public function accessories()
     {
-        return $this->belongsTo('App\Accessories');
+        return $this->belongsTo('App\Accessories','id','catagories_id');
     }
 }

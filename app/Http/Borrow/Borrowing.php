@@ -2,20 +2,46 @@
  namespace App\http\Borrow;
  use App\BorrowingList;
  use App\BorrowingItem;
+ use App\LogBorrowing;
 class Borrowing
 {
+    protected $status;
+    protected $borrow_list_id;
+    protected $log;
+    protected $log_id;
+    protected $date;
     protected $borrow;
-    function __construct(){
+    protected $teacher;
+    protected $description;
+    function __construct($status,$id = null,$description = null){
+        date_default_timezone_set('Asia/Bangkok');
+        $this->status = $status;
+        $this->description = $description;
+        if($id!=null){
+            $this->borrow_list_id = $id;
+            $this->date = date('Y-m-d H:i:s');
+
+            $this->borrow = BorrowingList::find($this->borrow_list_id);
+            $this->borrow->status = $status;
+            $this->borrow->update = $this->date;
+            $this->borrow->update();
+
+            $this->log = $this->borrow->logs()->where("datetime_end",null)->first();
+            $this->insertLog();
+            $this->updateLog();
+        }
 
     }
-    function borrow($user_id,$description,$accessories,$period,$projectName,$teacher){
+    function borrow($borrowList,$accessories){
+        $this->teacher = $borrowList['teacher_name'];
+        print_r($borrowList);
         $borrow = new BorrowingList();
-        $borrow->user_id = $user_id;
-        $borrow->description = $description;
-        $borrow->period = $period;
-        $borrow->project_name = $projectName;
-        $borrow->teacher_name = $teacher;
-        $borrow->status = "รออนุมัติ";
+        foreach($borrowList as $key=>$val){
+            $borrow->$key = $val;
+        }
+        $borrow->update = $this->date;
+        $borrow->date_borrow = $this->date;
+        $borrow->status = $this->status;
         $borrow->save();
 
         foreach($accessories as $key=>$val){
@@ -25,14 +51,27 @@ class Borrowing
             $borrowItem->number = $val;
             $borrowItem->save();
         }
-        return $borrow->id;
+        $this->borrow_list_id = $borrow->id;
+        $this->insertLog();
+        return $this->borrow_list_id;
 
     }
     function cancel(){
 
     }
-    function returnAccessories(){
-
+    function insertLog(){
+        $log = new LogBorrowing();
+        $log->title = $this->status;
+        $this->log->datetime_start = $this->date;
+        $log->borrowing_list_id = $this->borrow_list_id;
+        $log->description = $this->description;
+        $log->save();
+        $this->log_id = $log->id;
+        return $log->id;
     }
-
+    function updateLog(){
+        $this->log->borrowing_list_id = $this->borrow_list_id;
+        $this->log->datetime_end = $this->date;
+        return $this->log->update();
+    }
 }

@@ -16,14 +16,15 @@ class Alert extends Migration
         if (Schema::hasTable('users') && Schema::hasTable('borrowing_list')) {
             Schema::create('alert', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('user_id');
-                $table->unsignedBigInteger('borrowing_list_id');
+                // $table->unsignedBigInteger('user_id');
+                // $table->unsignedBigInteger('borrowing_list_id');
                 $table->boolean('read')->nullable();
                 $table->string('title')->nullable();
                 $table->string('body')->nullable();
-                $table->enum('type',['ขออนุมัติ','อนุมัติแล้ว','ได้รับแล้ว','ยกเลิกแล้ว','ไม่อนุมัติ','คืนแล้ว']);
-                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list');
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                $table->unsignedBigInteger('log_id')->nullable();
+                // $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list')->onDelete('cascade');
+                // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('log_id')->references('id')->on('log_borrowing')->onDelete('cascade');
             });
      }
     }

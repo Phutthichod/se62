@@ -9,15 +9,14 @@ class Member extends Model
     protected $table = "users";
     public $timestamps = false;
 
-    public function borrowingLists()
+    public function borrowingListsU()
     {
-        return $this->belongsTo('App\BorrowingList');
+        return $this->belongsTo('App\BorrowingList','id','user_id');
     }
-    public function alerts()
+    public function borrowingListsS()
     {
-        return $this->belongsTo('App\Alert');
+        return $this->belongsTo('App\BorrowingList','id','staff_id');
     }
-
     public static function memberKU($username,$password){
         if($password!=null){
             $uri = "http://158.108.207.4/se62_01/ldap.php?username=$username&password=$password";

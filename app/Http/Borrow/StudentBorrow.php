@@ -6,24 +6,25 @@ use App\Mail\TestMail;
 use App\Member;
 use Illuminate\Support\Facades\Mail;
 use App\Alert;
+use App\LogBorrowing;
 class StudentBorrow extends Borrowing
 {
-    function __construct(){
-
+    function construct($status,$id,$description){
+        parent::__construct($status,$id,$description);
     }
     function setProjectName($project_name){
 
     }
-    function arkForApprove(){
-
+    function borrow($borrowList,$accessories){
+        parent::borrow($borrowList,$accessories);
+        $this->sendMail($this->teacher);
     }
-    function sendMail($teacher,$id){
+    function sendMail($teacher){
         $member = Member::getMemberByThainame($teacher);
         Mail::to($member->email1)->send(new TestMail());
         $alert = new Alert();
-        $alert->user_id = session()->get('member')['id'];
-        $alert->borrowing_list_id = $id;
-        $alert->type = "ขออนุมัติ";
+        $alert->borrowing_list_id = $this->borrow_list_id;
+        $alert->log_id = $this->log_id;
         $alert->save();
         echo $member->email1;
     }

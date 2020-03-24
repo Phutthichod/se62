@@ -9,10 +9,10 @@ class BorrowingItem extends Model
     protected $table = "borrowing";
     public $timestamps = false;
     function accessory(){
-        return $this->hasOne('App\Accessories','accessories_id');
+        return $this->hasOne('App\Accessories','id','accessories_id');
     }
     function borrowingList(){
-        return $this->hasOne('App\BorrowingList','borrowing_list_id');
+        return $this->hasOne('App\BorrowingList','id','borrowing_list_id');
     }
 
 }

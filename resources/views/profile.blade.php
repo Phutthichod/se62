@@ -46,15 +46,9 @@
             <div class="card-body">
                 <div class="show-profile-detail show-mail">
                     @if(session()->get('mail2') == null)
-<<<<<<< HEAD
-                        {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'),"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
-                    @else
-                        {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'))}}
-=======
                         {{showDetail("อีเมล์",session()->get('member')['mail1'],"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
                     @else
                         {{showDetail("อีเมล์",session()->get('member')['mail1'],null)}}
->>>>>>> c10a13ebce9d57363fe591c3d036ec8534d50bc5
                         <?php $mail2 =  session()->get("mail2")?>
                         <?php showDetail("อีเมล์",'<input type="email" name="mail-update" class="form-control" disabled value='.$mail2.' />',"<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-danger delete-mail'>ลบ</button></div>");?>
                     @endif

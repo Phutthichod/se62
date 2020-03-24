@@ -7,7 +7,6 @@
     <div class="mt-5">
         <?php
 
-
         $th = ["ชื่อปุ๋ย","ชนิด1","ชนิด2","ปริมณการใช้","หน่วย","ช่วงอายุ","ธาตุอาหาร","จัดการ"];
         $btnDelete = createButton('btn btn-danger btn-sm btn-circle','','','<i class="far fa-trash-alt"></i>');
         $btnEditFer = createButton('btn btn-warning btn-sm btn-circle mr-2 btn-update','','data-toggle="modal" data-target="#update-fer"','<i class="far fa-edit"></i>');
@@ -17,6 +16,7 @@
         $td2 = ['สูตร 15-0-15','ปุ๋ยลูก','เร่งโต',8500.56,'กรัม','5-25',[$btnDetailSub,'text-align:center;'],[$btnEditSub.$btnDelete,'text-align:center;']];
         $td = [$td2,$td1];
         createTable('tableFer',$th,$td);
+
 ?>
     </div>
 

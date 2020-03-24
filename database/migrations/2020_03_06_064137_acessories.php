@@ -19,6 +19,8 @@ class Acessories extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('icon')->default("img/avatar.png");
+            $table->integer('number')->default(1);
+            $table->boolean('isBorrow')->default(1);
             $table->unsignedBigInteger('catagories_id');
             $table->foreign('catagories_id')->references('id')->on('catagories')->onDelete('cascade');
         });

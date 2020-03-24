@@ -19,13 +19,15 @@ class BorrowingList extends Migration
                 $table->id();
                 $table->unsignedBigInteger('user_id');
                 $table->string('teacher_name')->nullable();
+                $table->unsignedBigInteger('staff_id')->nullable();
                 $table->string('project_name')->nullable();
                 $table->string('description')->nullable();
-                $table->enum('status',['รอนุมัติ','รอรับ','ยกเลิก','อยู่ระว่างยืม','คืนแล้ว']);
-                $table->dateTime('update');
-                $table->dateTime('date_borrow');
+                $table->enum('status',['รออนุมัติ','รอรับ','ยกเลิก','ไม่อนุมัติ','ยืมแล้ว','คืนแล้ว',"ยืมเกิน"]);
+                $table->dateTime('update')->nullable();
+                $table->dateTime('date_borrow')->nullable();
                 $table->integer('period')->default(0);
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('staff_id')->references('id')->on('users')->onDelete('cascade');
             });
         }
     }

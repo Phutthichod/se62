@@ -19,18 +19,25 @@ class BorrowingController extends Controller
     }
     function borrow(Request $req){
         $permission = session()->get('member')['permission'];
-        $user_id = session()->get('member')['id'];
-        $description = $req->get("description");
-        $projectName = $req->get("project_name");
-        $accessories = [1=>2,2=>15];
-        $period = $req->get("period");
-        $teacher = $req->get("teacher_name");;
+        // $user_id = session()->get('member')['id'];
+        // $description = $req->get("description");
+        // $projectName = $req->get("project_name");
+        $accessories = [2=>2];
+        // $period = $req->get("period");
+        // $teacher = $req->get("teacher_name");
+        // $borrowList = [
+        //     "user_id" => $user_id,
+        //     "description" => $description,
+        //     "project_name" => $projectName,
+        //     "period" => $period,
+        //     "teacher_name" =>  $teacher
+        // ];
         $borrowList = [
-            "user_id" => $user_id,
-            "description" => $description,
-            "project_name" => $projectName,
-            "period" => $period,
-            "teacher_name" =>  $teacher
+            "user_id" => 1,
+            "description" => "sss",
+            "project_name" => "ssss",
+            "period" => 8,
+            "teacher_name" =>  "sssss"
         ];
 
         if($permission == "Student"){

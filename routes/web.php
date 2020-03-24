@@ -11,6 +11,7 @@ Route::get('/cancel/{id}',"BorrowingController@cancel");
 Route::get('/pass/{id}',"BorrowingController@pass");
 Route::get('/borrowed/{id}',"BorrowingController@borrowed");
 Route::get('/return/{id}',"BorrowingController@returnAccessories");
+Route::get('/history',"HistoryController@index");
 // Route::get('/soa', function () {
 //     return view('soa.index');
 // });

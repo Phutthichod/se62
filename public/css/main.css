@@ -2,3 +2,7 @@ body {
   background-color: #efefef;
 }
 
+.link-to-index {
+  cursor: pointer;
+}
+

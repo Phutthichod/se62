@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class BorrowingListItem extends Migration
+class Borrowing extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class BorrowingListItem extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('accessories')&&Schema::hasTable('borrowing_list')) {
+        if (Schema::hasTable('accessories')&&Schema::hasTable('borrowing_list')&&Schema::hasTable('icon')) {
             //
-            Schema::create('borrowing_list_item', function (Blueprint $table) {
+            Schema::create('borrowing', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('access_id');
                 $table->unsignedBigInteger('borrowing_list_id');
                 $table->integer('number');
-                $table->foreign('access_id')->references('id')->on('accessories');
-                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list');
+                $table->foreign('access_id')->references('id')->on('accessories')->onDelete('cascade');
+                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list')->onDelete('cascade');
             });
         }
 
@@ -34,6 +34,6 @@ class BorrowingListItem extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('borrowing_list_item');
+        Schema::dropIfExists('borrowing');
     }
 }

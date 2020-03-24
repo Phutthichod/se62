@@ -19350,6 +19350,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/soa/style.scss":
+/*!***************************************!*\
+  !*** ./resources/sass/soa/style.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/template/style.scss":
 /*!********************************************!*\
   !*** ./resources/sass/template/style.scss ***!
@@ -19362,9 +19373,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ }),
 
 /***/ 0:
-/*!******************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/main.scss ./resources/sass/login/style.scss ./resources/sass/show_profile/style.scss ./resources/sass/template/style.scss ***!
-  \******************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/main.scss ./resources/sass/login/style.scss ./resources/sass/show_profile/style.scss ./resources/sass/soa/style.scss ./resources/sass/template/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19372,6 +19383,7 @@ __webpack_require__(/*! F:\xampp\htdocs\se62\resources\js\app.js */"./resources/
 __webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\main.scss */"./resources/sass/main.scss");
 __webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\login\style.scss */"./resources/sass/login/style.scss");
 __webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\show_profile\style.scss */"./resources/sass/show_profile/style.scss");
+__webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\soa\style.scss */"./resources/sass/soa/style.scss");
 module.exports = __webpack_require__(/*! F:\xampp\htdocs\se62\resources\sass\template\style.scss */"./resources/sass/template/style.scss");
 
 

@@ -28,8 +28,8 @@ function showDetail($head, $body, $option = null)
                     <strong>รูปโปรไฟล์</strong>
                     <span>แก้ไขรูป</span>
                     <div class="upload-img">
-                        <input id='pic-logo' type='file' class='item-img file center-block' accept=".jpg,.png" name='icon_insert' />
-                        <img id="profile-show" src="{{session()->get('icon')}}" alt="">
+                        <input id='pic-logo' type='file' class='item-img file center-block'  accept=".jpg,.png" name='icon_insert' />
+                        <img id="profile-show" src="{{asset(session()->get('icon'))}}" alt="">
                     </div>
                 </div>
             </div>
@@ -47,11 +47,11 @@ function showDetail($head, $body, $option = null)
             <div class="card-body">
                 <div class="show-profile-detail show-mail">
                     @if(session()->get('mail2') == null)
-                    {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'),"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
+                        {{showDetail("อีเมล์",session()->get('member')['mail1'],"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
                     @else
-                    {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'))}}
-                    <?php $mail2 =  session()->get("mail2") ?>
-                    <?php showDetail("อีเมล์", '<input type="email" name="mail-update" class="form-control" disabled value=' . $mail2 . ' />', "<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-danger delete-mail'>ลบ</button></div>"); ?>
+                        {{showDetail("อีเมล์",session()->get('member')['mail1'],null)}}
+                        <?php $mail2 =  session()->get("mail2")?>
+                        <?php showDetail("อีเมล์",'<input type="email" name="mail-update" class="form-control" disabled value='.$mail2.' />',"<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-danger delete-mail'>ลบ</button></div>");?>
                     @endif
                 </div>
             </div>
@@ -133,6 +133,7 @@ function showDetail($head, $body, $option = null)
 
             .then(function(r) {
 
+<<<<<<< HEAD
                 $.ajax({
                     type: 'POST',
                     url: '/profile/updateIcon',
@@ -148,6 +149,25 @@ function showDetail($head, $body, $option = null)
                     }
                 });
                 $('#profile-show').attr('src', r);
+=======
+        $.ajax({
+               type:'POST',
+               url:'/profile/updateIcon',
+               data: {
+                   icon:r
+               },
+               success:function(data) {
+                  console.log(data)
+                    $('.img-profile').attr('src',`{{asset("`+data+`")}}`)
+                    $('#profile-show').attr('src', `{{asset("`+data+`")}}`);
+                //   location.reload();
+               },
+            error: function(data) {
+                console.log(data);
+            }
+            });
+
+>>>>>>> 193a603b4b3566f40158b5dbb1490353894c2f18
             });
         $('#upload-demo').croppie('destroy')
         $('.card-show-crop').hide()

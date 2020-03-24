@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/main.scss', 'public/css/main.css')
     .sass('resources/sass/login/style.scss', 'public/css/login/style.css')
     .sass('resources/sass/show_profile/style.scss', 'public/css/show_profile/style.css')
+    .sass('resources/sass/soa/style.scss', 'public/css/soa/style.css')
     .sass('resources/sass/template/style.scss', 'public/css/template/style.css');

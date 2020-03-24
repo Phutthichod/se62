@@ -4,15 +4,16 @@
 
 @section('content')
 <?php
-    function showDetail($head,$body,$option = null){
-        echo "
+function showDetail($head, $body, $option = null)
+{
+    echo "
                 <strong>$head</strong>
                 <span>$body</span>
         ";
-        if($option == null)
-            echo "<div></div>";
-        echo $option;
-    }
+    if ($option == null)
+        echo "<div></div>";
+    echo $option;
+}
 ?>
 <link rel="stylesheet" href="{{asset('css/show_profile/style.css')}}">
 <link rel="stylesheet" href="{{asset('lib/croppie/croppie.css')}}">
@@ -27,7 +28,7 @@
                     <strong>รูปโปรไฟล์</strong>
                     <span>แก้ไขรูป</span>
                     <div class="upload-img">
-                        <input id='pic-logo' type='file' class='item-img file center-block'  accept=".jpg,.png" name='icon_insert' />
+                        <input id='pic-logo' type='file' class='item-img file center-block' accept=".jpg,.png" name='icon_insert' />
                         <img id="profile-show" src="{{session()->get('icon')}}" alt="">
                     </div>
                 </div>
@@ -46,11 +47,11 @@
             <div class="card-body">
                 <div class="show-profile-detail show-mail">
                     @if(session()->get('mail2') == null)
-                        {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('member')['mail'][1],"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
+                    {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'),"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
                     @else
-                        {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('member')['mail'][1])}}
-                        <?php $mail2 =  session()->get("mail2")?>
-                        <?php showDetail("อีเมล์",'<input type="email" name="mail-update" class="form-control" disabled value='.$mail2.' />',"<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-danger delete-mail'>ลบ</button></div>");?>
+                    {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'))}}
+                    <?php $mail2 =  session()->get("mail2") ?>
+                    <?php showDetail("อีเมล์", '<input type="email" name="mail-update" class="form-control" disabled value=' . $mail2 . ' />', "<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-danger delete-mail'>ลบ</button></div>"); ?>
                     @endif
                 </div>
             </div>
@@ -61,7 +62,9 @@
             <strong>รูปโปรไฟล์</strong>
         </div>
         <div class="card-body">
-             <center><div id="upload-demo" ></div></center>
+            <center>
+                <div id="upload-demo"></div>
+            </center>
         </div>
         <div class="card-footer">
             <button class="btn btn-success crop-submit">ยืนยัน</button>
@@ -76,22 +79,22 @@
 
 <script src="{{asset('lib/croppie/croppie.js')}}"></script>
 <script>
-     $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $('.card-show-crop').hide()
     let img
 
-    $(document).on('change','#pic-logo', function () {
+    $(document).on('change', '#pic-logo', function() {
         // $('#change-profile').modal('show')
         $('.card-show-crop').toggle()
         let input = this
         console.log('cahnge');
         if (input.files && input.files[0]) {
             var reader = new FileReader()
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 console.log("set");
                 img = e.target.result;
                 // $('#change-profile').modal('show')
@@ -103,94 +106,97 @@
 
         }
     });
-    function crop(img){
-            $uploadCrop = $('#upload-demo').croppie({
-                viewport: {
+
+    function crop(img) {
+        $uploadCrop = $('#upload-demo').croppie({
+            viewport: {
                 width: 150,
                 height: 150,
-                type:'circle'
+                type: 'circle'
             },
-                enforceBoundary: false,
-                enableExif: true
+            enforceBoundary: false,
+            enableExif: true
 
-            });
-            $uploadCrop.croppie('bind', {
+        });
+        $uploadCrop.croppie('bind', {
             url: img
-        }).then(function(){
+        }).then(function() {
             console.log('jQuery bind complete');
             // $('.card-show-crop').toggle()
         });
     }
-    $('.crop-submit').click(function(){
-        $('#upload-demo').croppie('result',
-            {type:'canvas',size:'viewport'})
+    $('.crop-submit').click(function() {
+        $('#upload-demo').croppie('result', {
+                type: 'canvas',
+                size: 'viewport'
+            })
 
             .then(function(r) {
 
-        $.ajax({
-               type:'POST',
-               url:'/profile/updateIcon',
-               data: {
-                   icon:r
-               },
-               success:function(data) {
-                  console.log(data)
-                  location.reload();
-               },
-            error: function(data) {
-                console.log(data);
-            }
-            });
+                $.ajax({
+                    type: 'POST',
+                    url: '/profile/updateIcon',
+                    data: {
+                        icon: r
+                    },
+                    success: function(data) {
+                        console.log(data)
+                        location.reload();
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
                 $('#profile-show').attr('src', r);
             });
         $('#upload-demo').croppie('destroy')
         $('.card-show-crop').hide()
     })
-    $('.crop-cancel').click(function(){
+    $('.crop-cancel').click(function() {
         $('#upload-demo').croppie('destroy')
         $('.card-show-crop').hide()
     })
-    $(".add-mail").click(function(){
+    $(".add-mail").click(function() {
         console.log('click');
         $('.show-mail').append("<div></div>")
-        $('.show-mail').append(`<?php showDetail("อีเมล์",'<input type="email" name="mail-update" class="form-control" />',"<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-success update-mail'>บันทึก</button></div>");?>`);
+        $('.show-mail').append(`<?php showDetail("อีเมล์", '<input type="email" name="mail-update" class="form-control" />', "<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-success update-mail'>บันทึก</button></div>"); ?>`);
         $('.edit-mail').hide();
         $(this).remove();
     })
-    $(document).on('change','input[name="mail-update"]',function(){
+    $(document).on('change', 'input[name="mail-update"]', function() {
         console.log("change")
         updateMail($('input[name="mail-update"]').val())
     })
-    $(document).on('blur','input[name="mail-update"]',function(){
-        $('input[name="mail-update"]').attr('disabled','disabled')
+    $(document).on('blur', 'input[name="mail-update"]', function() {
+        $('input[name="mail-update"]').attr('disabled', 'disabled')
     })
-    $(document).on('click','.edit-mail',function(){
+    $(document).on('click', '.edit-mail', function() {
         $('input[name="mail-update"]').removeAttr('disabled')
         $('input[name="mail-update"]').focus()
     })
-    $(document).on('click','.update-mail',function(){
+    $(document).on('click', '.update-mail', function() {
         $('.edit-mail').show();
-        $('input[name="mail-update"]').attr('disabled','disabled')
+        $('input[name="mail-update"]').attr('disabled', 'disabled')
         updateMail($('input[name="mail-update"]').val())
         $(this).html("ลบ")
-        $(this).attr('class','btn btn-danger delete-mail')
+        $(this).attr('class', 'btn btn-danger delete-mail')
     })
-    function updateMail(mail){
+
+    function updateMail(mail) {
         $.ajax({
-               type:'POST',
-               url:'/profile/updateEmail',
-               data: {
-                mail:mail
-               },
-               success:function(data) {
-                  console.log(data)
+            type: 'POST',
+            url: '/profile/updateEmail',
+            data: {
+                mail: mail
+            },
+            success: function(data) {
+                console.log(data)
                 //   location.reload();
-               },
+            },
             error: function(data) {
                 console.log(data);
             }
-            });
+        });
     }
-
 </script>
 @endsection

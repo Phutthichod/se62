@@ -23,7 +23,7 @@ class Alert extends Migration
                 $table->string('body')->nullable();
                 $table->enum('type',['ขออนุมัติ','อนุมัติแล้ว','ได้รับแล้ว','ยกเลิกแล้ว','ไม่อนุมัติ','คืนแล้ว']);
                 $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list');
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
      }
     }

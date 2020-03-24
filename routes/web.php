@@ -13,17 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/login',"LoginController@Index");
-Route::post('/login',"LoginController@checkLogin");
-Route::get('/logout',"LoginController@logout");
+Route::get('/login',"MemberController@login");
+Route::post('/login',"MemberController@checkLogin");
+Route::get('/logout',"MemberController@logout");
+Route::get('/borrow',"BorrowingController@borrow");
+// Route::get('/soa', function () {
+//     return view('soa.index');
+// });
 Route::middleware(['web', 'index'])->group(function () {
-    Route::get('/index',"IndexController@index");
-    Route::get('/', function () {
-        return view('index');
+    Route::get('/',"IndexController@index");
+    Route::get('/{id}',"IndexController@index"); // change Mode (general,admin)
+
+    Route::group(['prefix'=>'profile'],function(){
+        Route::get('me',"MemberController@showProfile");
+        Route::post('updateIcon',"MemberController@updateIcon");
+        Route::post('updateEmail',"MemberController@updateEmail");
     });
-    Route::get('/profile',"ShowProfile@index");
-    Route::post('/profile/updateIcon',"ShowProfile@updateIcon");
-    Route::post('/profile/updateEmail',"ShowProfile@updateEmail");
-    Route::get('/index/{id}',"IndexController@index"); // change Mode (general,admin)
+
 });

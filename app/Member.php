@@ -28,10 +28,10 @@ class Member extends Model
         return null;
     }
     public static function  getMemberByThainame($name){
-        $uri = "http://158.108.207.4/se62_01/ldap.php?thainame=b6021654145";
+        $uri = "http://158.108.207.4/se62_01/ldap.php?thainame=$name";
         $response = \Httpful\Request::get($uri)->send();
         $member_ku = json_decode($response, true);
-        return self::createMember($member_ku,"b6021654145");
+        return self::createMember($member_ku,"$name");
     }
     static  function  createMember($member_ku,$username){
         if($member_ku!=''){
@@ -40,7 +40,7 @@ class Member extends Model
                 $member = new Member;
                 $member->username = $member_ku['uid'][0];
 
-                $member->thainame = $member_ku['first-name'][0];
+                $member->thainame = $member_ku['thainame'][0];
                 $member->firstName = $member_ku['first-name'][0];
                 $member->lastName = $member_ku['last-name'][0];
                 if($member_ku['type-person'][0] == 3){

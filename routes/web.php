@@ -7,7 +7,8 @@ Route::get('/login', "MemberController@login");
 Route::post('/login', "MemberController@checkLogin");
 Route::get('/logout', "MemberController@logout");
 Route::post('/borrow', "BorrowingController@borrow");
-Route::get('/cancel/{id}', "BorrowingController@cancel");
+Route::delete('/borrow/{id}', "BorrowingController@cancel");
+Route::delete('/cancel/{id}', "BorrowingController@cancel");
 Route::get('/pass/{id}', "BorrowingController@pass");
 Route::get('/borrowed/{id}', "BorrowingController@borrowed");
 Route::get('/return/{id}', "BorrowingController@returnAccessories");
@@ -15,7 +16,7 @@ Route::get('/history', "HistoryController@index");
 Route::get('/static', "StaticController@index");
 Route::get('/catagory', "AccessoryController@index");
 Route::get('/chart', "ChartController@index");
-Route::get('/productborrow', "ProductBorrowController@index");
+Route::get('/accessBorrow', "BorrowingController@showBorrowAll");
 Route::get('/static/search', "StaticController@static");
 // Route::get('/soa', function () {
 //     return view('soa.index');

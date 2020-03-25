@@ -27,9 +27,7 @@ class HistoryController extends Controller
             &&array_key_exists($key, $accessByPer)&&array_key_exists($key, $staticBorrowed))
                 $logAll[$key] = $item;
         }
-        foreach($logAll as $item){
-            echo $item->id;
-        }
+        $this->getHistory($logAll);
 
 
         // $historyAll = BorrowingList::get();
@@ -126,22 +124,16 @@ class HistoryController extends Controller
         }
         return $accessAll;
     }
-    function getHistory(){
+    function getHistory($borrowItems){
         $accessories = Accessories::get();
         $accessAll = array();
         foreach($accessories as $item){
             $accessAll[$item->id] = 0;
         }
-        $logs = LogBorrowing::where("title","ยืมแล้ว")->get();
-        $id;
-        foreach($logs as $item){
-            $item->setDateTime();
-            if($item->year>2563){
-                foreach($item->BorrowingList->borrowingItems()->get() as $borrowItem){
-                    if (array_key_exists($borrowItem->access_id, $accessAll))
-                        $accessAll[$borrowItem->access_id]++;
-                }
-            }
+
+        foreach($borrowItems as $borrowItem){
+            if (array_key_exists($borrowItem->access_id, $accessAll))
+                $accessAll[$borrowItem->access_id]++;
         }
         foreach($accessAll as $key=>$item){
             print_r("$key => $item<br>");

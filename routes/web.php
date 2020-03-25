@@ -16,10 +16,12 @@ Route::get('/static', "StaticController@index");
 Route::get('/catagory', "AccessoryController@index");
 Route::get('/chart', "ChartController@index");
 Route::get('/productborrow', "ProductBorrowController@index");
+Route::get('/static/search', "StaticController@static");
 // Route::get('/soa', function () {
 //     return view('soa.index');
 // });
 Route::middleware(['web', 'index'])->group(function () {
+
     Route::get('/sample', "HistoryController@index");
     Route::get('/historyItem', "AcessoriesHistoryController@index");
     Route::get('/', "IndexController@index");
@@ -31,9 +33,9 @@ Route::middleware(['web', 'index'])->group(function () {
         Route::post('updateEmail', "MemberController@updateEmail");
     });
 });
-
+Route::view('/static','static');
 //Route::resource('sample','CustomSearchController');
-
+//Route::get('/historyList', "HistoryController@index");
 //Route::post('sample/update', 'SampleController@update')->name('sample.update');
 
 //Route::get('sample/destroy/{id}', 'BorrowListController@destroy');

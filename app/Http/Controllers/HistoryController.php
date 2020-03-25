@@ -4,11 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BorrowingList;
-use App\LogBorrowing;
-use App\BorrowingItem;
-use App\Accessories;
-use App\Catagories;
-use App\Member;
 class HistoryController extends Controller
 {
     function index(){

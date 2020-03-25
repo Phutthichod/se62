@@ -12,6 +12,14 @@ use App\Member;
 class StaticController extends Controller
 {
     function index(){
+        return view("static");
+    }
+    function static(Request $req){
+        print_r($req->all());
+        $static = $this->getStatic();
+        return view("static",["static"=>$static]);
+    }
+    function search(){
         $logAll = array();
         $staticBorrowed = $this->getStaticByBorrowed();
         $logsYear = $this->getStaticByYear(null);
@@ -24,7 +32,7 @@ class StaticController extends Controller
             &&array_key_exists($key, $accessByPer)&&array_key_exists($key, $staticBorrowed))
                 $logAll[$key] = $item;
         }
-        $this->getHistory($logAll);
+        $this->getStatic($logAll);
     }
     function getStaticByCatagories($catagories_id){
         $accessories = array();
@@ -104,7 +112,7 @@ class StaticController extends Controller
         }
         return $borrowItems;
     }
-    function getHistory($borrowItems){
+    function getStatic($borrowItems){
         $borrowTotal = 0;
         $accessories = Accessories::get();
         $accessAll = array();

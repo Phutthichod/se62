@@ -9,18 +9,13 @@ use App\BorrowingItem;
 use App\Accessories;
 use App\Catagories;
 use App\Member;
+use DB;
 class StaticController extends Controller
 {
     function index(){
-        return view("static");
-    }
-    function static(Request $req){
-        print_r($req->all());
-        $static = $this->getStatic();
-        return view("static",["static"=>$static]);
-    }
-    function search(){
+
         $logAll = array();
+        $All = array();
         $staticBorrowed = $this->getStaticByBorrowed();
         $logsYear = $this->getStaticByYear(null);
         $logsMount = $this->getStaticByMount(null);
@@ -32,7 +27,27 @@ class StaticController extends Controller
             &&array_key_exists($key, $accessByPer)&&array_key_exists($key, $staticBorrowed))
                 $logAll[$key] = $item;
         }
-        $this->getStatic($logAll);
+        $All = $this->getStatic($logAll);
+        return view("static",array("staticAll"=>$All));
+    }
+
+    function search(Request $req){
+
+        $logAll = array();
+        $All = array();
+        $staticBorrowed = $this->getStaticByBorrowed();
+        $logsYear = $this->getStaticByYear($req->get("year"));
+        $logsMount = $this->getStaticByMount($req->get("month"));
+        $accessByCat = $this->getStaticByCatagories($req->get("catagories"));
+        $accessByPer = $this->getStaticByPermission($req->get("permission"));
+
+        foreach($logsYear as $key=>$item){
+            if(array_key_exists($key, $logsMount)&&array_key_exists($key, $accessByCat)
+            &&array_key_exists($key, $accessByPer)&&array_key_exists($key, $staticBorrowed))
+                $logAll[$key] = $item;
+        }
+        $All = $this->getStatic($logAll);
+        return view("static",array("staticAll"=>$All)); 
     }
     function getStaticByCatagories($catagories_id){
         $accessories = array();
@@ -117,6 +132,7 @@ class StaticController extends Controller
         $accessories = Accessories::get();
         $accessAll = array();
         $accessAllPer = array();
+        $All = array();
         foreach($accessories as $item){
             $accessAll[$item->id] = 0;
         }
@@ -131,8 +147,9 @@ class StaticController extends Controller
                 $accessAllPer[$borrowItem->access_id] = $accessAll[$borrowItem->access_id]/$borrowTotal*100;
         }
         foreach($accessAllPer as $key=>$item){
-            print_r("$key => $accessAll[$key] => $item%<br>");
+            $All[]=['id'=>$key ,'sum'=> $accessAll[$key] , 'per'=> $item];
         }
+        return $All;
 
     }
 }

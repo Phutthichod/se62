@@ -12,15 +12,15 @@ use App\Member;
 class HistoryController extends Controller
 {
     function index(){
-        $historyAll = BorrowingList::get();
-        $tbAll = array();
-        foreach($historyAll as $borrowList)
-        {
-            $btnDetailSub = createButton('btn btn-info btn-detailSub','','data-toggle="modal" data-target="#detailSub"','รายละเอียด');
-            $tbAll[]=[$borrowList['id'],$borrowList->user->firstName,$borrowList->user->lastName,$borrowList['status'],$borrowList['date_borrow'],[$btnDetailSub,'text-align:center;']];
+        // $historyAll = BorrowingList::get();
+        // $tbAll = array();
+        // foreach($historyAll as $borrowList)
+        // {
+        //     $btnDetailSub = createButton('btn btn-info btn-detailSub','','data-toggle="modal" data-target="#detailSub"','รายละเอียด');
+        //     $tbAll[]=[$borrowList['id'],$borrowList->user->firstName,$borrowList->user->lastName,$borrowList['status'],$borrowList['date_borrow'],[$btnDetailSub,'text-align:center;']];
 
-        }
-        return view("history",array("tb"=>$tbAll));
+        // }
+        // return view("history",array("tb"=>$tbAll));
 
         // $this->getHistory();
 
@@ -134,6 +134,7 @@ class HistoryController extends Controller
         return $accessAll;
     }
     function getHistory($borrowItems){
+        $borrowTotal = 0;
         $accessories = Accessories::get();
         $accessAll = array();
         foreach($accessories as $item){
@@ -143,9 +144,13 @@ class HistoryController extends Controller
         foreach($borrowItems as $borrowItem){
             if (array_key_exists($borrowItem->access_id, $accessAll))
                 $accessAll[$borrowItem->access_id]++;
+                $borrowTotal++;
+        }
+        foreach($borrowItems as $borrowItem){
+                $accessAll[$borrowItem->access_id] = $accessAll[$borrowItem->access_id]/$borrowTotal*100;
         }
         foreach($accessAll as $key=>$item){
-            print_r("$key => $item<br>");
+            print_r("$key => $item%<br>");
         }
 
     }

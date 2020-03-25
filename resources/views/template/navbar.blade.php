@@ -96,9 +96,11 @@
             </div>
           </a>
 
-          <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+          <a class="dropdown-item text-center small text-gray-500" href="/chart">Show All Alerts</a>
         </div>
-     </li> <!-- Nav Item - รายการยืม -->
+      </li>
+
+      <!-- Nav Item - รายการยืม -->
       <li class="nav-item dropdown no-arrow mx-1 show">
 
         <a class="nav-link dropdown-toggle nav-icon" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -226,7 +228,7 @@
         <div class="dropdown-header text-center">
           <img class="img-md rounded-circle img-profile" src="{{asset(session()->get('icon'))}}" alt="Profile image">
           <p class="mb-1 mt-3">{{session()->get('member')['thainame']}}</p>
-          <p class="font-weight-light text-muted mb-0">{{session()->get('member')['mail1']}}</p>
+
         </div>
         <a class="dropdown-item" href="/profile/me"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <sup><span class="badge badge-pill badge-danger">1</span></sup></a>
         @if(session()->get('member')['Admin'] == 1)

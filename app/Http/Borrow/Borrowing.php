@@ -20,13 +20,10 @@ class Borrowing
         $this->date = date('Y-m-d H:i:s');
         if($id!=null){
             $this->borrow_list_id = $id;
-
-
             $this->borrow = BorrowingList::find($this->borrow_list_id);
             $this->borrow->status = $status;
             $this->borrow->update = $this->date;
             $this->borrow->update();
-
             $this->log = $this->borrow->logs()->where("datetime_end",null)->first();
             $this->insertLog();
             $this->updateLog();
@@ -35,7 +32,7 @@ class Borrowing
     }
     function borrow($borrowList,$accessories){
         $this->teacher = $borrowList['teacher_name'];
-        print_r($borrowList);
+        // print_r($borrowList);
         $borrow = new BorrowingList();
         foreach($borrowList as $key=>$val){
             $borrow->$key = $val;

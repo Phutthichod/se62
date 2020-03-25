@@ -41,7 +41,7 @@
 
       <!-- Nav Item - รายการยืม -->
 
-      <a class="nav-item nav-link nav-icon" href="/productborrow" style="white-space: nowrap;">
+      <a class="nav-item nav-link nav-icon" href="/accessBorrow" style="white-space: nowrap;">
         <i class="fas fa-clipboard-list">
           <sup><span class="badge badge-pill badge-danger">1</span></sup>
         </i>
@@ -63,11 +63,45 @@
     @else
 
     <div class="menu-2">
-      <div class="nav-icon"><i class="fas fa-toolbox"></i><span>อุปกรณ์</span></div>
-      <div class="nav-icon"><i class="fas fa-clipboard-list"></i><span>ประวัติ</span></div>
-      <div class="nav-icon"><i class="fas fa-exclamation"></i><span>ยืมเกิน</span></div>
-      <div class="nav-icon"><i class="fas fa-chart-bar"></i><span>สถิติ</span></div>
-      <div class="nav-icon"><i class="fas fa-bell"></i><span>แจ้งเตือน</span></div>
+        <!-- Nav Item - ตะกร้า -->
+        <a class="nav-item nav-link nav-icon" href="/chart" style="white-space: nowrap;">
+            <i class="fas fa-toolbox dropdown">
+            <sup><span class="badge badge-pill badge-danger">1</span></sup>
+            </i>
+            <span style="color: black;">อุปกรณ์</span>
+        </a>
+
+        <!-- Nav Item - รายการยืม -->
+
+        <a class="nav-item nav-link nav-icon" href="/accessBorrow" style="white-space: nowrap;">
+            <i class="fas fa-clipboard-list">
+            <sup><span class="badge badge-pill badge-danger">1</span></sup>
+            </i>
+            <span style="color: black;">ประวัติ</span>
+        </a>
+
+        <!-- Nav Item - แจ้งเตือน -->
+        <a class="nav-item nav-link nav-icon" href="#" style="white-space: nowrap;">
+            <i class="fas fa-exclamation">
+            <sup><span class="badge badge-pill badge-danger">1</span></sup>
+            </i>
+            <span style="color: black;">ยืมเกิน</span>
+        </a>
+        <a class="nav-item nav-link nav-icon" href="/accessBorrow" style="white-space: nowrap;">
+            <i class="fas fa-chart-bar">
+            <sup><span class="badge badge-pill badge-danger">1</span></sup>
+            </i>
+            <span style="color: black;">สถิติ</span>
+        </a>
+
+        <!-- Nav Item - แจ้งเตือน -->
+        <a class="nav-item nav-link nav-icon" href="#" style="white-space: nowrap;">
+            <i class="fas fa-bell">
+            <sup><span class="badge badge-pill badge-danger">1</span></sup>
+            </i>
+            <span style="color: black;">แจ้งเตือน</span>
+        </a>
+        <div class="topbar-divider d-none d-sm-block"></div>
     </div>
 
     @endif

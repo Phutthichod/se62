@@ -230,12 +230,9 @@
             contentType: false,
             processData: false,
             success: function(data) {
-                console.log(data)
+                alert(data)
                 //   location.reload();
             },
-            error: function(data) {
-                console.log(data);
-            }
         });
     });
 

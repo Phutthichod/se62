@@ -30,4 +30,12 @@ function createTable($id,$th,$td){
 function createButton($class = '',$id = '',$attr = '',$text){
     return "<button style='color:white;' class='$class' id='$id' $attr>$text</button>";
 }
+function convertDateTime($dateTime){
+    $date = explode(" ",$dateTime)[0];
+    // $time = explode(" ",$dateTime)[1];
+    $year = explode("-",$date)[0]+543;
+    $mount = explode("-",$date)[1];
+    $day = explode("-",$date)[2];
+    return ["year"=>$year,"mount"=>$mount,"day"=>$day];
+}
 ?>

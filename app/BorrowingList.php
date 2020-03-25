@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\LogBorrowing;
+use App\BorrowingItem;
 class BorrowingList extends Model
 {
     protected $table = "borrowing_list";
@@ -14,8 +15,8 @@ class BorrowingList extends Model
     public function staff(){
         return $this->hasOne('App\Member','id','staff_id');
     }
-    function borrowingLists(){
-        return $this->belongsTo('App\Borrowing','id','borrowing_list_id');
+    function borrowingItems(){
+        return $this->belongsTo('App\BorrowingItem','id','borrowing_list_id');
     }
     public function logs()
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Catagories;
 class IndexController extends Controller
 {
     public function __construct(){
@@ -18,6 +19,10 @@ class IndexController extends Controller
             }
         }
 
-         return view('index');
+        $catagories = Catagories::find(1)->accessories()->get();
+        foreach($catagories as $item){
+            echo $item->name;
+        }
+        // return view('index',["catagories"=>$catagories]);
     }
 }

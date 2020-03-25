@@ -8,6 +8,9 @@ class Accessories extends Model
 {
     protected $table = "accessories";
     public function catagories(){
-        return $this->hasOne('App\Member','id','catagories_id');
+        return $this->hasOne('App\Catagories','id','catagories_id');
+    }
+    public function borrowItem(){
+        return $this->belongsTo("App\BorrowingItem","id","access_id");
     }
 }

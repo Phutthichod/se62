@@ -12,6 +12,7 @@
     </div>
 
 </div>
+
 <script>
     $('#tableFer').DataTable({
         "scrollX": true
@@ -19,3 +20,4 @@
 </script>
 
 @endsection
+

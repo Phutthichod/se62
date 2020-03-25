@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('email2')->unique();
             $table->string('email1')->unique();
             $table->string('icon',15);
+            $table->boolean("isAdmin");
             $table->enum('permission', ['Admin', 'User','Teacher','Other']);
         });
     }

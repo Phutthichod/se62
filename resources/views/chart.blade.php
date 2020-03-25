@@ -46,85 +46,131 @@
         <a href="/">หน้าแรก</a>
         <span>>ตะกร้า</span>
     </span>
+    <form action="/borrowList" id="borrowList">
+        <div class="card">
 
-    <div class="card">
-
-        <div class="card-header">
-            <div style="padding-right: 70%;">
-                <strong>รายละเอียดการยื้มอุปกรณ์</strong>
+            <div class="card-header">
+                <div style="padding-right: 70%;">
+                    <strong>รายละเอียดการยื้มอุปกรณ์</strong>
+                </div>
             </div>
+
+            <div class="card-body">
+                @if(session()->get('permission')=="Student")
+                <div class="row mb-4" id="row1" style="display: none;">
+                    <div class="col-xl-4 col-12 text-right">
+                        <strong>ชื่อโครงการ</strong>
+                    </div>
+                    <div class="col-xl-8 col-12">
+                        <input name="project_name" class="form-control" id="name1"></input>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-xl-4 col-12 text-right">
+                        <strong>ชื่ออาจารย์ที่อนุมัติ</strong>
+                    </div>
+                    <div class="col-xl-8 col-12">
+                        <input name="teacher_name" class="form-control" id="name2"></input>
+                    </div>
+                </div>
+
+
+                <div class="row mb-4">
+                    <div class="col-xl-4 col-12 text-right">
+                        <strong>เหตุผลการยืมอุปกรณ์</strong>
+                    </div>
+                    <div class="col-xl-8 col-12">
+                        <textarea name="description" class="form-control" id="name4" cols="30" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-xl-4 col-12 text-right">
+                        <strong>ลักษณะการยืม</strong>
+                    </div>
+                    <div class="col-xl-8 col-12" style="text-align: left;">
+                        <input type="radio" id="gridRadios1" name="radio" value="1" checked>
+                        <label for="1">แบบทั่วไป</label><br>
+                        <input type="radio" id="gridRadios2" name="radio" value="2">
+                        <label for="2">แบบโครงการ</label><br>
+                    </div>
+                </div>
+                @else
+                <div class="row mb-4">
+                    <div class="col-xl-4 col-12 text-right">
+                        <strong>เหตุผลการยืมอุปกรณ์</strong>
+                    </div>
+                    <div class="col-xl-8 col-12">
+                        <textarea name="description" class="form-control" id="name4" cols="30" rows="4"></textarea>
+                    </div>
+                </div>
+                @endif
+
+
+            </div>
+
         </div>
+        <br>
 
-        <div class="card-body">
+        <div class="card">
 
-            <div class="row mb-4" id="row1" style="display: none;">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>ชื่อโครงการ</strong>
-                </div>
-                <div class="col-xl-8 col-12">
-                    <input class="form-control" id="name1"></input>
+            <div class="card-header">
+                <div class="tab_list_product">
+                    <strong class="set_object_left">อุปกรณ์</strong>
+                    <strong>จำนวนชิ้น</strong>
+                    <strong>แอคชั่น</strong>
                 </div>
             </div>
 
-            <div class="row mb-4">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>ชื่ออาจารย์ที่อนุมัติ</strong>
-                </div>
-                <div class="col-xl-8 col-12">
-                    <input class="form-control" id="name2"></input>
-                </div>
+            <ul class="list-group" id="list-access">
+
+            </ul>
+
+            <div class="card-footer" style="text-align: right;">
+                <button id="submit" type="button" class="btn btn-success">ยืนยัน</button>
+                <button type="button" class="btn btn-danger">ยกเลิก</button>
             </div>
-
-
-            <div class="row mb-4">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>เหตุผลการยืมอุปกรณ์</strong>
-                </div>
-                <div class="col-xl-8 col-12">
-                    <textarea class="form-control" id="name4" cols="30" rows="4"></textarea>
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>ลักษณะการยืม</strong>
-                </div>
-                <div class="col-xl-8 col-12" style="text-align: left;">
-                    <input type="radio" id="gridRadios1" name="radio" value="1" checked>
-                    <label for="1">แบบทั่วไป</label><br>
-                    <input type="radio" id="gridRadios2" name="radio" value="2">
-                    <label for="2">แบบโครงการ</label><br>
-                </div>
-            </div>
-
 
         </div>
+        <br>
+    </form>
 
-    </div>
-    <br>
 
-    <div class="card">
+</div>
+<script src="{{asset('js/cart/cart.js')}}"></script>
+<script src="{{asset('js/cart/Accessories.js')}}"></script>
+<script>
 
-        <div class="card-header">
-            <div class="tab_list_product">
-                <strong class="set_object_left">อุปกรณ์</strong>
-                <strong>จำนวนชิ้น</strong>
-                <strong>แอคชั่น</strong>
-            </div>
-        </div>
+    let cart = new Cart(1,"dddd","2222","ssss","ssss",5)
+    let cart2 = new Cart(2,"dddd","2222","ssss","ssss",1)
+    let cart3 = new Cart(2,"dddd","2222","ssss","ssss",5)
 
-        <ul class="list-group">
-
+    let accessories = new Accessories()
+    accessories.addAccess(cart)
+    accessories.addAccess(cart2)
+    accessories.addAccess(cart3)
+    let accessList = accessories.getListAccess()
+    init()
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    // localStorage.setItem("accessList", accessories.getListAccess());
+    function init(){
+        let text = ''
+        for(i in accessList){
+            text+=`
             <li class="list-group-item tab_list_product">
-
-                <div class="set_object_left">
+                <div class="set_object_left" data-id=1 >
                     <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
-                    <span>asdasdasdasdasdasd</span>
+                    <span>${accessList[i].name}</span>
                 </div>
 
                 <div style="margin-top: 15px;">
                     <button type="button" id="nega1" class="btn_positive_negative btn_negative">-</button>
-                    <span id="amount_product1">1</span>
+                    <span id="amount_product1">${accessList[i].number}</span>
                     <button type="button" id="posi1" class="btn_positive_negative btn_positive">+</button>
                 </div>
 
@@ -133,46 +179,16 @@
                 </div>
 
             </li>
+            `
+        }
+        $("#list-access").html(text)
+    }
+    for(i in accessories.getListAccess()){
 
-            <li class="list-group-item tab_list_product">
-
-                <div class="set_object_left">
-                    <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
-                    <span>asdasdasdasdasdasd</span>
-                </div>
-
-                <div style="margin-top: 15px;">
-                    <button type="button" id="nega2" class="btn_positive_negative btn_negative">-</button>
-                    <span id="amount_product2">1</span>
-                    <button type="button" id="posi2" class=" btn_positive_negative btn_positive">+</button>
-                </div>
-
-                <div>
-                    <button type="button" id="delete" class="btn btn-danger btn-sm btn-delete btn_ListItem"><i class="far fa-trash-alt"></i></button>
-                </div>
-
-            </li>
-
-
-        </ul>
-
-        <div class="card-footer" style="text-align: right;">
-            <button type="button" class="btn btn-success">ยืนยัน</button>
-            <button type="button" class="btn btn-danger">ยกเลิก</button>
-        </div>
-
-    </div>
-    <br>
-
-</div>
-
-<script>
-    // let amount1 = document.getElementById("amount_product1").textContent;
-    $(document).ready(function() {
+    }
 
 
 
-    });
 
     $("#gridRadios2").on('change', function() {
         $("#row1").attr('style', 'display: flex;');
@@ -192,8 +208,29 @@
         let val = parseInt($(this).next().text())
         val--;
         if(val < 1)
-            $(this).prev().text(1)
-        else $(this).prev().text(val)
+            $(this).next().text(1)
+        else $(this).next().text(val)
     });
+    $("#submit").click(function(){
+        let form = $("#borrowList")[0]
+        let formData = new FormData(form);
+        formData.append("accessories",accessList)
+
+        $.ajax({
+            type: 'POST',
+            url: '/borrow',
+            data: form,
+            success: function(data) {
+                console.log(data)
+                //   location.reload();
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    })
+
+
+
 </script>
 @endsection

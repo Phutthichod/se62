@@ -67,7 +67,8 @@
             </div>
 
             <div class="row mb-4">
-                <div class="col-xl-4 col-12 text-right">
+                <div class="col-xl-4 col-
+                12 text-right">
                     <strong>ชื่ออาจารย์ที่อนุมัติ</strong>
                 </div>
                 <div class="col-xl-8 col-12">

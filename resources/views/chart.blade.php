@@ -123,9 +123,9 @@
                 </div>
 
                 <div style="margin-top: 15px;">
-                    <button type="button" id="nega1" class="btn_negative_positive">-</button>
+                    <button type="button" id="nega1" class="btn_positive_negative btn_negative">-</button>
                     <span id="amount_product1">1</span>
-                    <button type="button" id="posi1" class="btn_negative_positive">+</button>
+                    <button type="button" id="posi1" class="btn_positive_negative btn_positive">+</button>
                 </div>
 
                 <div>
@@ -142,9 +142,9 @@
                 </div>
 
                 <div style="margin-top: 15px;">
-                    <button type="button" id="nega2" class="btn_negative_positive">-</button>
+                    <button type="button" id="nega2" class="btn_positive_negative btn_negative">-</button>
                     <span id="amount_product2">1</span>
-                    <button type="button" id="posi2" class="btn_negative_positive">+</button>
+                    <button type="button" id="posi2" class=" btn_positive_negative btn_positive">+</button>
                 </div>
 
                 <div>
@@ -167,7 +167,7 @@
 </div>
 
 <script>
-    let amount1 = document.getElementById("amount_product1").textContent;
+    // let amount1 = document.getElementById("amount_product1").textContent;
     $(document).ready(function() {
 
 
@@ -182,12 +182,18 @@
         $("#row1").attr('style', 'display: none;');
     });
 
-    $("#posi1").on('click', function() {
-        document.getElementById("amount_product1").textContent = ++amount1;
+    $(".btn_positive").on('click', function() {
+        let val = parseInt($(this).prev().text())
+        val++;
+        $(this).prev().text(val)
     });
 
-    $("#nega1").on('click', function() {
-        document.getElementById("amount_product1").textContent = --amount1;
+    $(".btn_negative").on('click', function() {
+        let val = parseInt($(this).next().text())
+        val--;
+        if(val < 1)
+            $(this).prev().text(1)
+        else $(this).prev().text(val)
     });
 </script>
 @endsection

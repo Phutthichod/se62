@@ -23,7 +23,7 @@ class StudentBorrow extends Borrowing
         $member = Member::getMemberByThainame($teacher);
         Mail::to($member->email1)->send(new TestMail());
         $alert = new Alert();
-        $alert->borrowing_list_id = $this->borrow_list_id;
+        // $alert->borrowing_list_id = $this->borrow_list_id;
         $alert->log_id = $this->log_id;
         $alert->save();
         echo $member->email1;

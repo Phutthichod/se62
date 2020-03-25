@@ -8,13 +8,10 @@
 			<div class="col-md-4">
 			<div class="form-group" align="center">
 				<select name="fiter_status" id="fiter_status" class="from-control"required>
-					<option value="รออนุมัติ">รออนุมัติ</option>
-					<option value="รอรับ">รอรับ</option>
-					<option value="ยกเลิก">ยกเลิก</option>
-					<option value="ไม่อนุมัติ">ไม่อนุมัติ</option>
-					<option value="ยืมแล้ว">ยืมแล้ว</option>
-					<option value="คืนแล้ว">คืนแล้ว</option>
-					<option value="ยืมเกิน">ยืมเกิน</option>
+                    <option value="">Select</option>
+                    @foreach($item_data as $item)
+                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                    @endforeach
 				</select>
 			</div>
 		</div>
@@ -31,7 +28,7 @@
             <div class="container">
                 <div class="mt-5">
                     <?php
-						$th = ['id','ชื่อ','นามสกุล','status','วันที่ยืม','Action'];
+						$th = ['id','listId','access_id','ชื่อ','status','วันที่ยืม','Action'];
 				
                         createTable('tableFer',$th,$tb);
                     ?>

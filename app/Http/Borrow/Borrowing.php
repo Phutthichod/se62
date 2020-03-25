@@ -52,6 +52,7 @@ class Borrowing
             $borrowItem->save();
         }
         $this->borrow_list_id = $borrow->id;
+        $this->log = new LogBorrowing();
         $this->insertLog();
         return $this->borrow_list_id;
 
@@ -60,14 +61,14 @@ class Borrowing
 
     }
     function insertLog(){
-        $log = new LogBorrowing();
-        $log->title = $this->status;
+        // $log = new LogBorrowing();
+        $this->log->title = $this->status;
         $this->log->datetime_start = $this->date;
-        $log->borrowing_list_id = $this->borrow_list_id;
-        $log->description = $this->description;
-        $log->save();
-        $this->log_id = $log->id;
-        return $log->id;
+        $this->log->borrowing_list_id = $this->borrow_list_id;
+        $this->log->description = $this->description;
+        $this->log->save();
+        $this->log_id = $this->log->id;
+        return $this->log->id;
     }
     function updateLog(){
         $this->log->borrowing_list_id = $this->borrow_list_id;

@@ -12,6 +12,15 @@ use App\Member;
 class HistoryController extends Controller
 {
     function index(){
+        $historyAll = BorrowingList::get();
+        $tbAll = array();
+        foreach($historyAll as $borrowList)
+        {
+            $btnDetailSub = createButton('btn btn-info btn-detailSub','','data-toggle="modal" data-target="#detailSub"','รายละเอียด');
+            $tbAll[]=[$borrowList['id'],$borrowList->user->firstName,$borrowList->user->lastName,$borrowList['status'],$borrowList['date_borrow'],[$btnDetailSub,'text-align:center;']];
+            
+        }
+        return view("history",array("tb"=>$tbAll));
 
         // $this->getHistory();
 
@@ -21,7 +30,7 @@ class HistoryController extends Controller
         $logAll = array();
 
         $accessByCat = $this->getStaticByCatagories(null);
-        $accessByPer = $this->getStaticByPermission("student");
+        $accessByPer = $this->getStaticByPermission(null);
         foreach($logsYear as $key=>$item){
             if(array_key_exists($key, $logsMount)&&array_key_exists($key, $accessByCat)
             &&array_key_exists($key, $accessByPer)&&array_key_exists($key, $staticBorrowed))

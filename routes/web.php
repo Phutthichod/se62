@@ -16,7 +16,7 @@ Route::get('/static', "StaticController@index");
 Route::get('/catagory', "AccessoryController@index");
 Route::get('/chart', "ChartController@index");
 Route::get('/productborrow', "ProductBorrowController@index");
-Route::view('/static','static');
+Route::get('/static/search', "StaticController@search");
 // Route::get('/soa', function () {
 //     return view('soa.index');
 // });

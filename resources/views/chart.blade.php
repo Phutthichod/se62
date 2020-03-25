@@ -148,14 +148,14 @@
 
     });
 
-    let cart = new Cart(1, "dddd", "2222", "ssss", "ssss", 5)
-    let cart2 = new Cart(2, "dddd", "2222", "ssss", "ssss", 1)
-    let cart3 = new Cart(2, "dddd", "2222", "ssss", "ssss", 5)
+    let cart = new Cart(3,"dddd","2222","ssss","ssss",5)
+    let cart2 = new Cart(2,"dddd","2222","ssss","ssss",1)
+    // let cart3 = new Cart(5,"dddd","2222","ssss","ssss",5)
 
     let accessories = new Accessories()
     accessories.addAccess(cart)
     accessories.addAccess(cart2)
-    accessories.addAccess(cart3)
+    // accessories.addAccess(cart3)
     let accessList = accessories.getListAccess()
 
     init()
@@ -193,9 +193,6 @@
         $("#list-access").html(text)
     }
 
-    for (i in accessories.getListAccess()) {
-
-    }
 
     $("#gridRadios2").on('change', function() {
         $("#row1").attr('style', 'display: flex;');
@@ -222,12 +219,16 @@
     $("#submit").click(function() {
         let form = $("#borrowList")[0]
         let formData = new FormData(form);
-        formData.append("accessories", accessList)
+        formData.append("accessories", JSON.stringify(accessList))
 
         $.ajax({
             type: 'POST',
             url: '/borrow',
-            data: form,
+            data: formData,
+            sync: false,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(data) {
                 console.log(data)
                 //   location.reload();

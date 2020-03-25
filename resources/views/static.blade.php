@@ -5,12 +5,12 @@
 @section('content')
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <h1>สถิติ</h1>
-<div class="w3-white w3-text-grey w3-card-4">
+<form class="w3-white w3-text-grey w3-card-4 p-3" action="/static/search" method="get">
     <hr>
     <div class="row" >
     <div class="col-md-3 mb-5">
         <label for="year">ปี</label>
-            <select class="custom-select d-block w-100" id="year" required>
+            <select class="custom-select d-block w-100" name="year" >
                 <option value=""></option>
 				<option value="">2557</option>
 				<option value="">2558</option>
@@ -23,46 +23,47 @@
     </div>
     <div class="col-md-3 mb-5">
         <label for="month">เดือน</label>
-            <select class="custom-select d-block w-100" id="month" required>
+            <select class="custom-select d-block w-100" name="month" >
                 <option value=""></option>
-                <option value="">ม.ค.</option>
-                <option value="">ก.พ.</option>
-                <option value="">มี.ค.</option>
-                <option value="">เม.ษ.</option>
-                <option value="">พ.ค.</option>
-                <option value="">มิ.ย.</option>
-                <option value="">ก.ค.</option>
-                <option value="">ส.ค.</option>
-                <option value="">ก.ย.</option>
-                <option value="">ต.ค.</option>
-                <option value="">พ.ย.</option>
-                <option value="">ธ.ค.</option>
+                <option value="1">ม.ค.</option>
+                <option value="2">ก.พ.</option>
+                <option value="3">มี.ค.</option>
+                <option value="4">เม.ษ.</option>
+                <option value="5">พ.ค.</option>
+                <option value="6">มิ.ย.</option>
+                <option value="7">ก.ค.</option>
+                <option value="8">ส.ค.</option>
+                <option value="9">ก.ย.</option>
+                <option value="10">ต.ค.</option>
+                <option value="11">พ.ย.</option>
+                <option value="12">ธ.ค.</option>
 			</select>
         </div>
         <div class="col-md-3 mb-5">
         <label for="catagories">หมวดหมู่</label>
-            <select class="custom-select d-block w-100" id="catagories" required>
-                <option value=""></option>
+            <select class="custom-select d-block w-100" name="catagories" >
+              <option value="">Select</option>
+
 			</select>
-    </div>
-    <div class="col-md-3 mb-5">
-        <label for="year">ประเภทผู้ใช้</label>
-            <select class="custom-select d-block w-100" id="type" required>
-                <option value=""></option>
-				<option value="">นิสิต</option>
-				<option value="">อาจารย์</option>
-				<option value="">บุคลากร</option>
-			</select>
-    </div>
-    
+        </div>
+        <div class="col-md-3 mb-5">
+            <label for="year">ประเภทผู้ใช้</label>
+                <select class="custom-select d-block w-100" name="permission" >
+                    <option value="">ทุกคน</option>
+                    <option value="Student">นิสิต</option>
+                    <option value="Teacher">อาจารย์</option>
+                    <option value="Other">บุคลากร</option>
+                </select>
+        </div>
+
     </div>
         <div class="form-grop">
-				<button type="button" name ="filter" id="filter" calss="btn btn-info">Filter</button>
-				<button type="button" name ="filter" id="reset" calss="btn btn-default">Reset</button>
-			</div>
-            <br>
-</div>
-</div> 
+				<button type="submit" name ="filter" id="filter" class="btn btn-info">Filter</button>
+				<button type="button" name ="filter" id="reset" class="btn btn-primary">Reset</button>
+		</div>
+        <br>
+    </div>
+</form>
 <br>
 <br>
     <H1 align="center"> ปี xxxx เดือน xxxx </H1>
@@ -70,27 +71,13 @@
     <div class="w3-white w3-text-grey w3-card-4">
       <div class="w3-container">
         <hr>
-
+        @foreach($staticAll as $item)
         <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>อุปกรณ์</b></p>
-        <p>คอม</p>
+        <p>{{ $item['id'] }}</p>
         <div class="w3-light-grey w3-round-xlarge w3-small">
-          <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
+          <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:{{ $item['per'] }}%">{{ $item['per']  }}</div>
         </div><br>
-        <p>เมาส์</p>
-        <div class="w3-light-grey w3-round-xlarge w3-small">
-          <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-            <div class="w3-center w3-text-white">80%</div>
-          </div>
-        </div><br>
-        <p>ฟหกฟหก</p>
-        <div class="w3-light-grey w3-round-xlarge w3-small">
-          <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
-        </div><br>
-        <p>ฟกฟหกฟก</p>
-        <div class="w3-light-grey w3-round-xlarge w3-small">
-          <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
-        </div>
-        <br>
+        @endforeach
       </div>
     </div><br>
 

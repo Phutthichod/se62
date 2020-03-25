@@ -19,10 +19,11 @@ class BorrowingController extends Controller
     }
     function borrow(Request $req){
         $accessories;
-        $period;
+        $period = 0;
         foreach(json_decode($req->get('accessories'),true) as $val){
             $accessories[$val['id']] = $val['number'];
         }
+        print_r($accessories);
         $permission = session()->get('member')['permission'];
         $user_id = session()->get('member')['id'];
         $description = $req->get("description");
@@ -52,7 +53,7 @@ class BorrowingController extends Controller
             $id = $personBorrow->borrow($borrowList,$accessories);
         }
 
-        echo $id;
+        // echo $id;
 
 
     }

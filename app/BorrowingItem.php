@@ -8,7 +8,7 @@ class BorrowingItem extends Model
 {
     protected $table = "borrowing";
     public $timestamps = false;
-    function accessory(){
+    function accessories(){
         return $this->hasOne('App\Accessories','id','access_id');
     }
     function borrowingList(){

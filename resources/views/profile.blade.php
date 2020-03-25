@@ -133,23 +133,6 @@ function showDetail($head, $body, $option = null)
 
             .then(function(r) {
 
-<<<<<<< HEAD
-                $.ajax({
-                    type: 'POST',
-                    url: '/profile/updateIcon',
-                    data: {
-                        icon: r
-                    },
-                    success: function(data) {
-                        console.log(data)
-                        location.reload();
-                    },
-                    error: function(data) {
-                        console.log(data);
-                    }
-                });
-                $('#profile-show').attr('src', r);
-=======
         $.ajax({
                type:'POST',
                url:'/profile/updateIcon',
@@ -167,7 +150,6 @@ function showDetail($head, $body, $option = null)
             }
             });
 
->>>>>>> 193a603b4b3566f40158b5dbb1490353894c2f18
             });
         $('#upload-demo').croppie('destroy')
         $('.card-show-crop').hide()

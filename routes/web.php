@@ -15,6 +15,7 @@ Route::get('/history', "HistoryController@index");
 Route::get('/catagory', "AccessoryController@index");
 Route::get('/chart', "ChartController@index");
 Route::get('/productborrow', "ProductBorrowController@index");
+Route::view('/static','static');
 // Route::get('/soa', function () {
 //     return view('soa.index');
 // });
@@ -31,7 +32,6 @@ Route::middleware(['web', 'index'])->group(function () {
         Route::post('updateEmail', "MemberController@updateEmail");
     });
 });
-Route::view('/static','static');
 //Route::resource('sample','CustomSearchController');
 //Route::get('/historyList', "HistoryController@index");
 //Route::post('sample/update', 'SampleController@update')->name('sample.update');

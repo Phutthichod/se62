@@ -43,7 +43,7 @@
 <div class="container">
 
     <span>  
-        <a href="/index">หน้าแรก</a>
+        <a href="/">หน้าแรก</a>
         <span>>ตะกร้า</span>
     </span>
 

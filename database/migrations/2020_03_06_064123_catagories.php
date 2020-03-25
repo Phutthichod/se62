@@ -16,8 +16,8 @@ class Catagories extends Migration
         Schema::create('catagories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->string('img');
+            $table->string('description')->nullable();
+            $table->string('icon',15)->default("img/avatar.png");
         });
     }
 

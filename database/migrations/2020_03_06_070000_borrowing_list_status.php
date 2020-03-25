@@ -14,14 +14,14 @@ class BorrowingListStatus extends Migration
     public function up()
     {
         if (Schema::hasTable('borrowing_list')) {
-            Schema::create('borrowing_status', function (Blueprint $table) {
+            Schema::create('log_borrowing', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('borrowing_list_id');
                 $table->dateTime('datetime_start')->nullable();
                 $table->dateTime('datetime_end')->nullable();
                 $table->string('description')->nullable();
-                $table->enum('title',['ขอยืม','รอนุมัติ','รอรับ','ยกเลิก','อยู่ระว่างยืม','คืนแล้ว']);
-                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list');
+                $table->enum('title',['รออนุมัติ','รอรับ','ยกเลิก','ไม่อนุมัติ','ยืมแล้ว','คืนแล้ว',"ยืมเกิน"]);
+                $table->foreign('borrowing_list_id')->references('id')->on('borrowing_list')->onDelete('cascade');
             });
         }
     }

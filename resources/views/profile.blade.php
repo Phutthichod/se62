@@ -29,7 +29,7 @@ function showDetail($head, $body, $option = null)
                     <span>แก้ไขรูป</span>
                     <div class="upload-img">
                         <input id='pic-logo' type='file' class='item-img file center-block' accept=".jpg,.png" name='icon_insert' />
-                        <img id="profile-show" src="{{session()->get('icon')}}" alt="">
+                        <img id="profile-show" src="{{asset(session()->get('icon'))}}" alt="">
                     </div>
                 </div>
             </div>
@@ -47,9 +47,9 @@ function showDetail($head, $body, $option = null)
             <div class="card-body">
                 <div class="show-profile-detail show-mail">
                     @if(session()->get('mail2') == null)
-                    {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'),"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
+                    {{showDetail("อีเมล์",session()->get('member')['mail1'],"<button class='btn btn-success add-mail'>เพิ่มเมล์</button>") }}
                     @else
-                    {{showDetail("อีเมล์",session()->get('member')['mail'][0].session()->get('mail2'))}}
+                    {{showDetail("อีเมล์",session()->get('member')['mail1'],null)}}
                     <?php $mail2 =  session()->get("mail2") ?>
                     <?php showDetail("อีเมล์", '<input type="email" name="mail-update" class="form-control" disabled value=' . $mail2 . ' />', "<div class='manage-mail'><button class='btn btn-warning edit-mail'>แก้ไข</button><button class='btn btn-danger delete-mail'>ลบ</button></div>"); ?>
                     @endif
@@ -86,7 +86,6 @@ function showDetail($head, $body, $option = null)
     });
     $('.card-show-crop').hide()
     let img
-
     $(document).on('change', '#pic-logo', function() {
         // $('#change-profile').modal('show')
         $('.card-show-crop').toggle()
@@ -102,8 +101,6 @@ function showDetail($head, $body, $option = null)
                 crop(img);
             }
             reader.readAsDataURL(input.files[0])
-
-
         }
     });
 
@@ -116,7 +113,6 @@ function showDetail($head, $body, $option = null)
             },
             enforceBoundary: false,
             enableExif: true
-
         });
         $uploadCrop.croppie('bind', {
             url: img
@@ -130,9 +126,7 @@ function showDetail($head, $body, $option = null)
                 type: 'canvas',
                 size: 'viewport'
             })
-
             .then(function(r) {
-
                 $.ajax({
                     type: 'POST',
                     url: '/profile/updateIcon',
@@ -141,13 +135,14 @@ function showDetail($head, $body, $option = null)
                     },
                     success: function(data) {
                         console.log(data)
-                        location.reload();
+                        $('.img-profile').attr('src', `{{asset("` + data + `")}}`)
+                        $('#profile-show').attr('src', `{{asset("` + data + `")}}`);
+                        //   location.reload();
                     },
                     error: function(data) {
                         console.log(data);
                     }
                 });
-                $('#profile-show').attr('src', r);
             });
         $('#upload-demo').croppie('destroy')
         $('.card-show-crop').hide()

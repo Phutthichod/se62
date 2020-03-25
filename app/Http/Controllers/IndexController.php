@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Catagories;
 
 class IndexController extends Controller
 {
@@ -21,6 +22,8 @@ class IndexController extends Controller
             }
         }
 
-        return redirect('/');
+        return view("index");
+
+        // return view('index',["catagories"=>$catagories]);
     }
 }

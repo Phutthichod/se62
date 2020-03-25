@@ -17,9 +17,10 @@ class Borrowing
         date_default_timezone_set('Asia/Bangkok');
         $this->status = $status;
         $this->description = $description;
+        $this->date = date('Y-m-d H:i:s');
         if($id!=null){
             $this->borrow_list_id = $id;
-            $this->date = date('Y-m-d H:i:s');
+
 
             $this->borrow = BorrowingList::find($this->borrow_list_id);
             $this->borrow->status = $status;

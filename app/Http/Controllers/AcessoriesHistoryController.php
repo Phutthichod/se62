@@ -19,7 +19,7 @@ class AcessoriesHistoryController extends Controller
         {
             $btnDetailSub = createButton('btn btn-info btn-detailSub','','data-toggle="modal" data-target="#detailSub"','รายละเอียด');
             $tbAll[]=[$borrowItem['id'],$borrowItem['borrowing_list_id'],$borrowItem['access_id'],$borrowItem->accessories->name,$borrowItem->borrowingList->status,$borrowItem->borrowingList->date_borrow,[$btnDetailSub,'text-align:center;']];
-            
+
         }
         //return view("history_item",compact('item_data'));
         return view("history_item",["item_data"=>$item_data,"tb"=>$tbAll]);

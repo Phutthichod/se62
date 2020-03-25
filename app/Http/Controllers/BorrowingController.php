@@ -18,6 +18,7 @@ class BorrowingController extends Controller
         // echo $borrow->index();
     }
     function borrow(Request $req){
+        print_r($req->all());
         $permission = session()->get('member')['permission'];
         // $user_id = session()->get('member')['id'];
         // $description = $req->get("description");
@@ -41,10 +42,9 @@ class BorrowingController extends Controller
         ];
 
         if($permission == "Student"){
-            $personBorrow = new StudentBorrow("รออนุมัติ");
-            // $borrowList["status"] = "รออนุมัติ";
-            $id = $personBorrow->borrow($borrowList,$accessories);
-            // $personBorrow->sendMail($teacher);
+
+            // $personBorrow = new StudentBorrow("รออนุมัติ");
+            // $id = $personBorrow->borrow($borrowList,$accessories);
         }else{
             $personBorrow = new Borrow("รอรับ");
             $id = $personBorrow->borrow($borrowList,$accessories);

@@ -21,5 +21,13 @@ class HistoryController extends Controller
 
         }
         return view("history",array("tb"=>$tbAll));
+
+        // $this->getHistory();
+
+
+
+
+
     }
+
 }

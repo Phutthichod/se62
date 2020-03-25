@@ -747,12 +747,15 @@
                 "crossdomain",
                 "laravel"
             ],
+<<<<<<< HEAD
+=======
             "funding": [
                 {
                     "url": "https://github.com/barryvdh",
                     "type": "github"
                 }
             ],
+>>>>>>> 59a4546424e61e36a7285979d8ae2c1c1929b768
             "time": "2020-03-11T21:05:07+00:00"
         },
         {
@@ -1403,12 +1406,15 @@
                 "sftp",
                 "storage"
             ],
+<<<<<<< HEAD
+=======
             "funding": [
                 {
                     "url": "https://offset.earth/frankdejonge",
                     "type": "other"
                 }
             ],
+>>>>>>> 59a4546424e61e36a7285979d8ae2c1c1929b768
             "time": "2020-03-17T18:58:12+00:00"
         },
         {
@@ -1611,6 +1617,8 @@
                 "datetime",
                 "time"
             ],
+<<<<<<< HEAD
+=======
             "funding": [
                 {
                     "url": "https://opencollective.com/Carbon",
@@ -1621,6 +1629,7 @@
                     "type": "tidelift"
                 }
             ],
+>>>>>>> 59a4546424e61e36a7285979d8ae2c1c1929b768
             "time": "2020-03-24T16:01:47+00:00"
         },
         {
@@ -2360,12 +2369,15 @@
                 "identifier",
                 "uuid"
             ],
+<<<<<<< HEAD
+=======
             "funding": [
                 {
                     "url": "https://github.com/ramsey",
                     "type": "github"
                 }
             ],
+>>>>>>> 59a4546424e61e36a7285979d8ae2c1c1929b768
             "time": "2020-03-22T02:34:13+00:00"
         },
         {
@@ -3911,6 +3923,8 @@
                 "clean",
                 "php"
             ],
+<<<<<<< HEAD
+=======
             "funding": [
                 {
                     "url": "https://www.paypal.me/moelleken",
@@ -3929,6 +3943,7 @@
                     "type": "tidelift"
                 }
             ],
+>>>>>>> 59a4546424e61e36a7285979d8ae2c1c1929b768
             "time": "2020-03-13T01:23:26+00:00"
         },
         {
@@ -3999,16 +4014,6 @@
                 "datatables",
                 "jquery",
                 "laravel"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/yajra",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/yajra",
-                    "type": "patreon"
-                }
             ],
             "time": "2020-03-03T16:29:31+00:00"
         }
@@ -6013,6 +6018,5 @@
     "platform": {
         "php": "^7.2.5"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }

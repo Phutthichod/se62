@@ -18,37 +18,41 @@ class BorrowingController extends Controller
         // echo $borrow->index();
     }
     function borrow(Request $req){
-        print_r($req->all());
+        $accessories;
+        $period;
+        foreach(json_decode($req->get('accessories'),true) as $val){
+            $accessories[$val['id']] = $val['number'];
+        }
         $permission = session()->get('member')['permission'];
-        // $user_id = session()->get('member')['id'];
-        // $description = $req->get("description");
-        // $projectName = $req->get("project_name");
-        $accessories = [2=>2];
-        // $period = $req->get("period");
-        // $teacher = $req->get("teacher_name");
-        // $borrowList = [
-        //     "user_id" => $user_id,
-        //     "description" => $description,
-        //     "project_name" => $projectName,
-        //     "period" => $period,
-        //     "teacher_name" =>  $teacher
-        // ];
+        $user_id = session()->get('member')['id'];
+        $description = $req->get("description");
+        $projectName = $req->get("project_name");
+        $teacher = $req->get("teacher_name");
         $borrowList = [
-            "user_id" => 1,
-            "description" => "sss",
-            "project_name" => "ssss",
-            "period" => 8,
-            "teacher_name" =>  "sssss"
+            "user_id" => $user_id,
+            "description" => $description,
+            "project_name" => $projectName,
+            "period" => $period,
+            "teacher_name" => $teacher
         ];
-
+        // $borrowList = [
+        //     "user_id" => 1,
+        //     "description" => "sss",
+        //     "project_name" => "ssss",
+        //     "period" => 8,
+        //     "teacher_name" =>  "sssss"
+        // ];
+        $id;
         if($permission == "Student"){
 
-            // $personBorrow = new StudentBorrow("รออนุมัติ");
-            // $id = $personBorrow->borrow($borrowList,$accessories);
+            $personBorrow = new StudentBorrow("รออนุมัติ");
+            $id = $personBorrow->borrow($borrowList,$accessories);
         }else{
             $personBorrow = new Borrow("รอรับ");
             $id = $personBorrow->borrow($borrowList,$accessories);
         }
+
+        echo $id;
 
 
     }

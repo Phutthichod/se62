@@ -42,7 +42,7 @@
 
 <div class="container">
 
-    <span>  
+    <span>
         <a href="/">หน้าแรก</a>
         <span>>ตะกร้า</span>
     </span>
@@ -51,7 +51,7 @@
 
         <div class="card-header">
             <div style="padding-right: 70%;">
-                <strong>รายละเอียดการยื้มอุปกรณ์</strong>
+                <strong>รายละเอียดการยืมอุปกรณ์</strong>
             </div>
         </div>
 
@@ -86,7 +86,7 @@
 
             <div class="row mb-4">
                 <div class="col-xl-4 col-12 text-right">
-                    <strong>เหตุผลการยื้มอุปกรณ์</strong>
+                    <strong>เหตุผลการยืมอุปกรณ์</strong>
                 </div>
                 <div class="col-xl-8 col-12">
                     <textarea class="form-control" id="name4" cols="30" rows="4"></textarea>
@@ -95,7 +95,7 @@
 
             <div class="row mb-4">
                 <div class="col-xl-4 col-12 text-right">
-                    <strong>ลักษณะการยื้ม</strong>
+                    <strong>ลักษณะการยืม</strong>
                 </div>
                 <div class="col-xl-8 col-12" style="text-align: left;">
                     <input type="radio" id="gridRadios1" name="radio" value="1" checked>

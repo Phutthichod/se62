@@ -25,13 +25,13 @@
         <label for="month">เดือน</label>
             <select class="custom-select d-block w-100" id="month" required>
                 <option value=""></option>
-				<option value="">ม.ค.</option>
-				<option value="">ก.พ.</option>
-				<option value="">มี.ค.</option>
-				<option value="">เม.ษ.</option>
-				<option value="">พ.ค.</option>
-				<option value="">มิ.ย.</option>
-				<option value="">ก.ค.</option>
+                <option value="">ม.ค.</option>
+                <option value="">ก.พ.</option>
+                <option value="">มี.ค.</option>
+                <option value="">เม.ษ.</option>
+                <option value="">พ.ค.</option>
+                <option value="">มิ.ย.</option>
+                <option value="">ก.ค.</option>
                 <option value="">ส.ค.</option>
                 <option value="">ก.ย.</option>
                 <option value="">ต.ค.</option>
@@ -47,7 +47,7 @@
     </div>
     <div class="col-md-3 mb-5">
         <label for="year">ประเภทผู้ใช้</label>
-            <select class="custom-select d-block w-100" id="item" required>
+            <select class="custom-select d-block w-100" id="type" required>
                 <option value=""></option>
 				<option value="">นิสิต</option>
 				<option value="">อาจารย์</option>

@@ -47,6 +47,7 @@
         <span>>ตะกร้า</span>
     </span>
     <form action="/borrowList" id="borrowList">
+
         <div class="card">
 
             <div class="card-header">
@@ -134,35 +135,43 @@
 
         </div>
         <br>
+
     </form>
 
 
 </div>
+
 <script src="{{asset('js/cart/cart.js')}}"></script>
 <script src="{{asset('js/cart/Accessories.js')}}"></script>
 <script>
+    $(document).ready(function() {
 
-    let cart = new Cart(1,"dddd","2222","ssss","ssss",5)
-    let cart2 = new Cart(2,"dddd","2222","ssss","ssss",1)
-    let cart3 = new Cart(2,"dddd","2222","ssss","ssss",5)
+    });
+
+    let cart = new Cart(1, "dddd", "2222", "ssss", "ssss", 5)
+    let cart2 = new Cart(2, "dddd", "2222", "ssss", "ssss", 1)
+    let cart3 = new Cart(2, "dddd", "2222", "ssss", "ssss", 5)
 
     let accessories = new Accessories()
     accessories.addAccess(cart)
     accessories.addAccess(cart2)
     accessories.addAccess(cart3)
     let accessList = accessories.getListAccess()
+
     init()
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
     // localStorage.setItem("accessList", accessories.getListAccess());
-    function init(){
+    function init() {
         let text = ''
-        for(i in accessList){
-            text+=`
-            <li class="list-group-item tab_list_product">
+        for (i in accessList) {
+            text += `
+            <li class="list-group-item tab_list_product" id="tab_list_product${i}">
                 <div class="set_object_left" data-id=1 >
                     <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
                     <span>${accessList[i].name}</span>
@@ -175,7 +184,7 @@
                 </div>
 
                 <div>
-                    <button type="button" id="delete" class="btn btn-danger btn-sm btn-delete btn_ListItem"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm btn-delete btn_ListItem"><i class="far fa-trash-alt"></i></button>
                 </div>
 
             </li>
@@ -183,12 +192,10 @@
         }
         $("#list-access").html(text)
     }
-    for(i in accessories.getListAccess()){
+
+    for (i in accessories.getListAccess()) {
 
     }
-
-
-
 
     $("#gridRadios2").on('change', function() {
         $("#row1").attr('style', 'display: flex;');
@@ -207,14 +214,15 @@
     $(".btn_negative").on('click', function() {
         let val = parseInt($(this).next().text())
         val--;
-        if(val < 1)
+        if (val < 1)
             $(this).next().text(1)
         else $(this).next().text(val)
     });
-    $("#submit").click(function(){
+
+    $("#submit").click(function() {
         let form = $("#borrowList")[0]
         let formData = new FormData(form);
-        formData.append("accessories",accessList)
+        formData.append("accessories", accessList)
 
         $.ajax({
             type: 'POST',
@@ -228,9 +236,30 @@
                 console.log(data);
             }
         });
-    })
+    });
 
 
-
+    $(".btn-delete").click(function() {
+        let IDelementList = $(this).parent().parent().attr("id");
+        swal({
+                title: "ยืนยันการยกเลิกการยืมอุปกรณ์ ???",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("กำลังดำเนินการลบรายการ", {
+                        icon: "success",
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            $("#" + IDelementList).remove();
+                        }
+                    });
+                } else {
+                    swal("ยกเลิกการดำเนินการ!");
+                }
+            });
+    });
 </script>
 @endsection

@@ -17,6 +17,8 @@ Route::get('/catagory',"AccessoryController@index");
 //     return view('soa.index');
 // });
 Route::middleware(['web', 'index'])->group(function () {
+    Route::get('/sample', "HistoryController@index");
+    Route::get('/historyItem', "AcessoriesHistoryController@index");
     Route::get('/',"IndexController@index");
     Route::get('/{id}',"IndexController@index"); // change Mode (general,admin)
 
@@ -27,3 +29,11 @@ Route::middleware(['web', 'index'])->group(function () {
     });
 
 });
+
+//Route::resource('sample','CustomSearchController');
+
+//Route::post('sample/update', 'SampleController@update')->name('sample.update');
+
+//Route::get('sample/destroy/{id}', 'BorrowListController@destroy');
+
+

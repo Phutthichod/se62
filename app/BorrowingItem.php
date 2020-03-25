@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Accessories;
 class BorrowingItem extends Model
 {
     protected $table = "borrowing";

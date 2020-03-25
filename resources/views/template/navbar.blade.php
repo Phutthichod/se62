@@ -62,9 +62,9 @@
 
     @else
 
-    <div class="menu-2">
+    <div class="menu-2 mt-3">
         <!-- Nav Item - ตะกร้า -->
-        <a class="nav-item nav-link nav-icon" href="/chart" style="white-space: nowrap;">
+        <a class="nav-item nav-link nav-icon" href="/accessMange" style="white-space: nowrap;">
             <i class="fas fa-toolbox dropdown">
             <sup><span class="badge badge-pill badge-danger">1</span></sup>
             </i>
@@ -73,7 +73,7 @@
 
         <!-- Nav Item - รายการยืม -->
 
-        <a class="nav-item nav-link nav-icon" href="/accessBorrow" style="white-space: nowrap;">
+        <a class="nav-item nav-link nav-icon" href="/history" style="white-space: nowrap;">
             <i class="fas fa-clipboard-list">
             <sup><span class="badge badge-pill badge-danger">1</span></sup>
             </i>
@@ -87,7 +87,7 @@
             </i>
             <span style="color: black;">ยืมเกิน</span>
         </a>
-        <a class="nav-item nav-link nav-icon" href="/accessBorrow" style="white-space: nowrap;">
+        <a class="nav-item nav-link nav-icon" href="/static" style="white-space: nowrap;">
             <i class="fas fa-chart-bar">
             <sup><span class="badge badge-pill badge-danger">1</span></sup>
             </i>

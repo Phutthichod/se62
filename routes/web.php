@@ -14,6 +14,7 @@ Route::get('/return/{id}', "BorrowingController@returnAccessories");
 Route::get('/history', "HistoryController@index");
 Route::get('/catagory', "AccessoryController@index");
 Route::get('/chart', "ChartController@index");
+Route::get('/productborrow', "ProductBorrowController@index");
 // Route::get('/soa', function () {
 //     return view('soa.index');
 // });

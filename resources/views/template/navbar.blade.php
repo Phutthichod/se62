@@ -5,10 +5,13 @@
   <div class="tab"></div>
 
   <div class="nav-main">
+
     <a href="/">
       <div class="logo link-to-index"><img class="img-logo-ku" src="{{ asset('img/KU_SubLogo.png') }}" alt=""></div>
     </a>
+
     <a href="/"><strong class="title link-to-index">ระบบยืมอุปกรณ์</strong></strong></a>
+
     <form class="form-inline search">
       <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
       <div class="dropdown show">
@@ -23,196 +26,42 @@
       </div>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+
     @if(session()->get('member')['Admin'] != 1 || session()->get('permission') != 1)
 
-    <ul class="navbar-nav ml-auto menu" style="display: flex;">
-
-      <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-      <li class="nav-item dropdown no-arrow d-sm-none">
-        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-search fa-fw"></i>
-        </a>
-        <!-- Dropdown - Messages -->
-        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-          <form class="form-inline mr-auto w-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
+    <div class="menu" style="display: flex;">
 
       <!-- Nav Item - ตะกร้า -->
-      <li class="nav-item dropdown no-arrow mx-1 show">
-
-        <a class="nav-link dropdown-toggle nav-icon" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <i class="fas fa-shopping-basket dropdown">
-            <sup><span class="badge badge-pill badge-danger">1</></sup>
-          </i>
-          <span style="color: black;">ตะกร้า</span>
-        </a>
-
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" style="width: 20rem!important;" aria-labelledby="alertsDropdown">
-          <h6 class="dropdown-header">
-            Alerts Center
-          </h6>
-
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-primary">
-                <i class="fas fa-file-alt text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 12, 2019</div>
-              <span class="font-weight-bold">A new monthly report is ready to download!</span>
-            </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-success">
-                <i class="fas fa-donate text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 7, 2019</div>
-              $290.29 has been deposited into your account!
-            </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-warning">
-                <i class="fas fa-exclamation-triangle text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 2, 2019</div>
-              Spending Alert: We've noticed unusually high spending for your account.
-            </div>
-          </a>
-
-          <a class="dropdown-item text-center small text-gray-500" href="/chart">Show All Alerts</a>
-        </div>
-      </li>
+      <a class="nav-item nav-link nav-icon" href="/chart" style="white-space: nowrap;">
+        <i class="fas fa-shopping-basket dropdown">
+          <sup><span class="badge badge-pill badge-danger">1</span></sup>
+        </i>
+        <span style="color: black;">ตะกร้า</span>
+      </a>
 
       <!-- Nav Item - รายการยืม -->
-      <li class="nav-item dropdown no-arrow mx-1 show">
 
-        <a class="nav-link dropdown-toggle nav-icon" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <i class="fas fa-clipboard-list">
-            <sup><span class="badge badge-pill badge-danger">1</span></sup>
-          </i>
-          <span style="color: black;">รายการยืม</span>
-        </a>
-
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" style="width: 20rem!important;" aria-labelledby="alertsDropdown">
-          <h6 class="dropdown-header">
-            Alerts Center
-          </h6>
-
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-primary">
-                <i class="fas fa-file-alt text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 12, 2019</div>
-              <span class="font-weight-bold">A new monthly report is ready to download!</span>
-            </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-success">
-                <i class="fas fa-donate text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 7, 2019</div>
-              $290.29 has been deposited into your account!
-            </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-warning">
-                <i class="fas fa-exclamation-triangle text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 2, 2019</div>
-              Spending Alert: We've noticed unusually high spending for your account.
-            </div>
-          </a>
-
-          <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-        </div>
-
-      </li>
+      <a class="nav-item nav-link nav-icon" href="/productborrow" style="white-space: nowrap;">
+        <i class="fas fa-clipboard-list">
+          <sup><span class="badge badge-pill badge-danger">1</span></sup>
+        </i>
+        <span style="color: black;">รายการยืม</span>
+      </a>
 
       <!-- Nav Item - แจ้งเตือน -->
-      <li class="nav-item dropdown no-arrow mx-1 show">
-
-        <a class="nav-link dropdown-toggle nav-icon" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <i class="fas fa-bell">
-            <sup><span class="badge badge-pill badge-danger">1</span></sup>
-          </i>
-          <span style="color: black;">แจ้งเตือน</span>
-        </a>
-
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" style="width: 20rem!important;" aria-labelledby="alertsDropdown">
-          <h6 class="dropdown-header">
-            Alerts Center
-          </h6>
-
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-primary">
-                <i class="fas fa-file-alt text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 12, 2019</div>
-              <span class="font-weight-bold">A new monthly report is ready to download!</span>
-            </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-success">
-                <i class="fas fa-donate text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 7, 2019</div>
-              $290.29 has been deposited into your account!
-            </div>
-          </a>
-          <a class="dropdown-item d-flex align-items-center" style="white-space: normal;" href="#">
-            <div class="mr-3">
-              <div class="icon-circle bg-warning">
-                <i class="fas fa-exclamation-triangle text-white"></i>
-              </div>
-            </div>
-            <div>
-              <div class="small text-gray-500">December 2, 2019</div>
-              Spending Alert: We've noticed unusually high spending for your account.
-            </div>
-          </a>
-
-          <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-        </div>
-
-      </li>
+      <a class="nav-item nav-link nav-icon" href="#" style="white-space: nowrap;">
+        <i class="fas fa-bell">
+          <sup><span class="badge badge-pill badge-danger">1</span></sup>
+        </i>
+        <span style="color: black;">แจ้งเตือน</span>
+      </a>
 
       <div class="topbar-divider d-none d-sm-block"></div>
 
-    </ul>
+    </div>
 
     @else
+
     <div class="menu-2">
       <div class="nav-icon"><i class="fas fa-toolbox"></i><span>อุปกรณ์</span></div>
       <div class="nav-icon"><i class="fas fa-clipboard-list"></i><span>ประวัติ</span></div>
@@ -220,7 +69,9 @@
       <div class="nav-icon"><i class="fas fa-chart-bar"></i><span>สถิติ</span></div>
       <div class="nav-icon"><i class="fas fa-bell"></i><span>แจ้งเตือน</span></div>
     </div>
+
     @endif
+
     <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown profile">
       <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
         <img class="img-xs rounded-circle ml-2 img-profile" src="{{asset(session()->get('icon'))}}" alt="Profile image"> <span class="font-weight-normal">{{session()->get('member')['thainame']}}</span></a>
@@ -241,6 +92,7 @@
         <a href="/logout" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
       </div>
     </li>
+
   </div>
 
   @else

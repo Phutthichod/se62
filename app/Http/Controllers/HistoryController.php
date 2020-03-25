@@ -18,7 +18,7 @@ class HistoryController extends Controller
         {
             $btnDetailSub = createButton('btn btn-info btn-detailSub','','data-toggle="modal" data-target="#detailSub"','รายละเอียด');
             $tbAll[]=[$borrowList['id'],$borrowList->user->firstName,$borrowList->user->lastName,$borrowList['status'],$borrowList['date_borrow'],[$btnDetailSub,'text-align:center;']];
-            
+
         }
         return view("history",array("tb"=>$tbAll));
 

@@ -15,13 +15,32 @@
         justify-content: center;
     }
 
+    li a {
+        color: black;
+    }
+
+    li a:hover {
+        color: #006765;
+        text-decoration: none;
+    }
+
+    .set_borderBT {
+        border-bottom: 2px solid #006765;
+    }
+
+    .check {
+        height: 100%;
+        padding: 0.75rem 1.25rem;
+    }
+
     .tab_list_product {
         width: 100%;
         display: grid;
-        grid-template-columns: 3fr 1fr 1fr;
+        grid-template-columns: 4fr 1fr;
         grid-gap: 1rem;
         align-self: center;
         justify-content: center;
+        border: 1px solid rgba(0, 0, 0, 0.125);
     }
 
     .set_object_left {
@@ -38,136 +57,169 @@
     .btn_negative_positive {
         border: 1px solid rgba(0, 0, 0, .09);
     }
+
+    .setnodetail {
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>
 
 <div class="container">
 
     <span>
         <a href="/">หน้าแรก</a>
-        <span>>ตะกร้า</span>
+        <span>>รายการที่ยืม</span>
     </span>
 
     <div class="card">
 
-        <div class="card-header">
-            <div style="padding-right: 70%;">
-                <strong>รายละเอียดการยื้มอุปกรณ์</strong>
-            </div>
+        <div class="card-header" style="padding: 0;">
+            <ul class="nav tab-nav-right tab_main" role="tablist">
+                <li role="presentation" class="check set_borderBT" href="#t_1" data-toggle="tab">
+                    <a href="#t_1" data-toggle="tab" aria-expanded="true">ทั้งหมด</a>
+                </li>
+                <li role="presentation" class="check" href="#t_2" data-toggle="tab">
+                    <a href="#t_2" data-toggle="tab" aria-expanded="false">รออนุมัติ</a>
+                </li>
+                <li role="presentation" class="check" href="#t_3" data-toggle="tab">
+                    <a href="#t_3" data-toggle="tab" aria-expanded="false">รอรับอุปกรณ์</a>
+                </li>
+                <li role="presentation" class="check" href="#t_4" data-toggle="tab">
+                    <a href="#t_4" data-toggle="tab" aria-expanded="false">รับอุปกรณ์แล้ว</a>
+                </li>
+                <li role="presentation" class="check" href="#t_5" data-toggle="tab">
+                    <a href="#t_5" data-toggle="tab" aria-expanded="false">คืนอุปกรณ์</a>
+                </li>
+                <li role="presentation" class="check" href="#t_6" data-toggle="tab">
+                    <a href="#t_6" data-toggle="tab" aria-expanded="false">ยื้มอุปกรณ์เกิน</a>
+                </li>
+                <li role="presentation" class="check" href="#t_7" data-toggle="tab">
+                    <a href="#t_7" data-toggle="tab" aria-expanded="false">ยกเลิกอุปกรณ์</a>
+                </li>
+            </ul>
         </div>
+        <br>
 
-        <div class="card-body">
+        <div class="tab-content">
 
-            <div class="row mb-4" id="row1" style="display: none;">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>ชื่อโครงการ</strong>
-                </div>
-                <div class="col-xl-8 col-12">
-                    <input class="form-control" id="name1"></input>
+            <div role="tabpanel" class="tab-pane fade show active" id="t_1">
+                <div class="setnodetail">
+                    <span style="padding: 0;">ยังไม่มีรายการ</span>
                 </div>
             </div>
 
-            <div class="row mb-4">
-                <div class="col-xl-4 col-
-                12 text-right">
-                    <strong>ชื่ออาจารย์ที่อนุมัติ</strong>
+            <div role="tabpanel" class="tab-pane fade" id="t_2">
+
+                <div style="margin-bottom: 20px;">
+                    <div class="card-header tab_list_product">
+                        <strong class="set_object_left">หมายเลขการยืมอุปกรณ์</strong>
+                        <strong>รอรับอุปกรณ์</strong>
+                    </div>
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item tab_list_product">
+
+                            <div class="set_object_left">
+                                <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
+                                <span>asdasdasdasdasdasd</span>
+                            </div>
+
+                            <div style="margin-top: 15px;">
+                                <span>1</span>
+                            </div>
+
+                        </li>
+
+                        <li class="list-group-item tab_list_product">
+
+                            <div class="set_object_left">
+                                <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
+                                <span>asdasdasdasdasdasd</span>
+                            </div>
+
+                            <div style="margin-top: 15px;">
+                                <span>1</span>
+                            </div>
+
+                        </li>
+
+
+                    </ul>
+
+                    <div class="card-footer" style="text-align: right; background-color: white;">
+                        <button type="button" class="btn btn-success">ดูข้อมูลการยืม</button>
+                        <button type="button" class="btn btn-danger">ยกเลิกการยืม</button>
+                    </div>
                 </div>
-                <div class="col-xl-8 col-12">
-                    <input class="form-control" id="name2"></input>
+
+                <div style="margin-bottom: 20px;">
+                    <div class="card-header tab_list_product">
+                        <strong class="set_object_left">หมายเลขการยืมอุปกรณ์</strong>
+                        <strong>รอรับอุปกรณ์</strong>
+                    </div>
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item tab_list_product">
+
+                            <div class="set_object_left">
+                                <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
+                                <span>asdasdasdasdasdasd</span>
+                            </div>
+
+                            <div style="margin-top: 15px;">
+                                <span>1</span>
+                            </div>
+
+                        </li>
+
+                        <li class="list-group-item tab_list_product">
+
+                            <div class="set_object_left">
+                                <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
+                                <span>asdasdasdasdasdasd</span>
+                            </div>
+
+                            <div style="margin-top: 15px;">
+                                <span>1</span>
+                            </div>
+
+                        </li>
+
+
+                    </ul>
+
+                    <div class="card-footer" style="text-align: right; background-color: white;">
+                        <button type="button" class="btn btn-success">ดูข้อมูลการยืม</button>
+                        <button type="button" class="btn btn-danger">ยกเลิกการยืม</button>
+                    </div>
                 </div>
+
             </div>
 
-            <div class="row mb-4">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>อีเมลอาจารย์ที่อนุมัติ</strong>
-                </div>
-                <div class="col-xl-8 col-12">
-                    <input class="form-control" id="name3"></input>
-                </div>
+            <div role="tabpanel" class="tab-pane fade" id="t_3">
+
             </div>
 
-            <div class="row mb-4">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>เหตุผลการยื้มอุปกรณ์</strong>
-                </div>
-                <div class="col-xl-8 col-12">
-                    <textarea class="form-control" id="name4" cols="30" rows="4"></textarea>
-                </div>
+            <div role="tabpanel" class="tab-pane fade" id="t_4">
+
             </div>
 
-            <div class="row mb-4">
-                <div class="col-xl-4 col-12 text-right">
-                    <strong>ลักษณะการยื้ม</strong>
-                </div>
-                <div class="col-xl-8 col-12" style="text-align: left;">
-                    <input type="radio" id="gridRadios1" name="radio" value="1" checked>
-                    <label for="1">แบบทั่วไป</label><br>
-                    <input type="radio" id="gridRadios2" name="radio" value="2">
-                    <label for="2">แบบโครงการ</label><br>
-                </div>
+            <div role="tabpanel" class="tab-pane fade" id="t_5">
+
             </div>
 
+            <div role="tabpanel" class="tab-pane fade" id="t_6">
 
-        </div>
-
-    </div>
-    <br>
-
-    <div class="card">
-
-        <div class="card-header">
-            <div class="tab_list_product">
-                <strong class="set_object_left">อุปกรณ์</strong>
-                <strong>จำนวนชิ้น</strong>
-                <strong>แอคชั่น</strong>
             </div>
-        </div>
 
-        <ul class="list-group">
+            <div role="tabpanel" class="tab-pane fade" id="t_7">
 
-            <li class="list-group-item tab_list_product">
+            </div>
 
-                <div class="set_object_left">
-                    <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
-                    <span>asdasdasdasdasdasd</span>
-                </div>
-
-                <div style="margin-top: 15px;">
-                    <button type="button" id="nega1" class="btn_negative_positive">-</button>
-                    <span id="amount_product1">1</span>
-                    <button type="button" id="posi1" class="btn_negative_positive">+</button>
-                </div>
-
-                <div>
-                    <button type="button" id="delete" class="btn btn-danger btn-sm btn-delete btn_ListItem"><i class="far fa-trash-alt"></i></button>
-                </div>
-
-            </li>
-
-            <li class="list-group-item tab_list_product">
-
-                <div class="set_object_left">
-                    <img src="{{asset('img/productlist.png')}}" alt="" style="width: 70px; height: 70px; margin-right: 5%;">
-                    <span>asdasdasdasdasdasd</span>
-                </div>
-
-                <div style="margin-top: 15px;">
-                    <button type="button" id="nega2" class="btn_negative_positive">-</button>
-                    <span id="amount_product2">1</span>
-                    <button type="button" id="posi2" class="btn_negative_positive">+</button>
-                </div>
-
-                <div>
-                    <button type="button" id="delete" class="btn btn-danger btn-sm btn-delete btn_ListItem"><i class="far fa-trash-alt"></i></button>
-                </div>
-
-            </li>
-
-
-        </ul>
-
-        <div class="card-footer" style="text-align: right;">
-            <button type="button" class="btn btn-success">ยืนยัน</button>
-            <button type="button" class="btn btn-danger">ยกเลิก</button>
         </div>
 
     </div>
@@ -176,6 +228,13 @@
 </div>
 
 <script>
+    $(document).ready(function() {
 
+    });
+
+    $(".check").on('click', function() {
+        $(".check").removeClass("set_borderBT")
+        $(this).attr('class', 'check set_borderBT')
+    });
 </script>
 @endsection

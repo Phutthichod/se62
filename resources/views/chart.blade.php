@@ -51,7 +51,7 @@
 
         <div class="card-header">
             <div style="padding-right: 70%;">
-                <strong>รายละเอียดการยื้มอุปกรณ์</strong>
+                <strong>รายละเอียดการยืมอุปกรณ์</strong>
             </div>
         </div>
 
@@ -192,8 +192,8 @@
         let val = parseInt($(this).next().text())
         val--;
         if(val < 1)
-            $(this).prev().text(1)
-        else $(this).prev().text(val)
+            $(this).next().text(1)
+        else $(this).next().text(val)
     });
 </script>
 @endsection

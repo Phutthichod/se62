@@ -45,7 +45,7 @@
 								</div>
 								<div class="col-xl-9 col-12">
 									<select id="status1" class="js-example-basic-single form-control">
-										<option disabled selected value='null'>เลือกลักษณะการค้นหา</option>
+										<option value='null'>เลือกลักษณะการค้นหา</option>
 										<option value="1">ประวัติอุปกรณ์</option>
 										<option value="2">ประวัติรายการ</option>
 									</select>
@@ -58,7 +58,7 @@
 								</div>
 								<div class="col-xl-9 col-12">
 									<select id="status2" class="js-example-basic-single form-control">
-										<option disabled selected value='null'>เลือกสถานะ</option>
+										<option value='null'>เลือกสถานะ</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -109,40 +109,12 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<div class="table-responsive">
-						<table id="datatable" class="table table-bordered table-striped table-hover table-data" style='width:100%'>
-							<thead>
-								<tr>
-									<th>ลำดับ</th>
-									<th>ชื่อ</th>
-									<th>นามสกุล</th>
-									<th>สถานะ</th>
-									<th>วันที่ยิม</th>
-									<th>รายละเอียด</th>
-								</tr>
-							</thead>
-							<tfoot>
-								<tr>
-									<th>ลำดับ</th>
-									<th>ชื่อ</th>
-									<th>นามสกุล</th>
-									<th>สถานะ</th>
-									<th>วันที่ยิม</th>
-									<th>รายละเอียด</th>
-								</tr>
-							</tfoot>
-							<tbody id="fetchDataTable">
-								<tr>
-									<td class="set_Object_Center">xxx</td>
-									<td class="set_Object_left">xxx</td>
-									<td class="set_Object_left">xxx</td>
-									<td class="set_Object_Center">xxx</td>
-									<td class="set_Object_Center">xxx</td>
-									<td class="set_Object_Center"><button type="button" class="btn btn-success btn-sm"><i class="fas fa-bars"></i></button></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<?php
+						$th = ['id','firstName','lastName','status','date_borrow','Action'];
+				
+                        createTable('tableFer',$th,$tb);
+                    ?>
+					
 				</div>
 			</div>
 		</div>
@@ -160,5 +132,8 @@
 				'<"row"<"col-sm-5 set_Object_left"i><"col-sm-7"p>>'
 		});
 	});
+	$('#tableFer').DataTable({
+    "scrollx":true
+     });
 </script>
 @endsection

@@ -64,7 +64,7 @@
 
     <div class="menu-2 mt-3">
         <!-- Nav Item - ตะกร้า -->
-        <a class="nav-item nav-link nav-icon" href="/accessMange" style="white-space: nowrap;">
+        <a class="nav-item nav-link nav-icon" href="/1" style="white-space: nowrap;">
             <i class="fas fa-toolbox dropdown">
             <sup><span class="badge badge-pill badge-danger">1</span></sup>
             </i>

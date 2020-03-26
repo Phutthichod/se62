@@ -18,7 +18,7 @@ class Acessories extends Migration
             $table->string('access_key')->nullable();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->string('icon')->default("img/avatar.png");
+            $table->string('icon',50)->default("img/defalt_equipment.png");
             $table->integer('number')->default(1);
             $table->boolean('isBorrow')->default(1);
             $table->unsignedBigInteger('catagories_id');

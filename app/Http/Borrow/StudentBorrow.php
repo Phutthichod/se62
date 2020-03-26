@@ -16,17 +16,18 @@ class StudentBorrow extends Borrowing
 
     }
     function borrow($borrowList,$accessories){
-        parent::borrow($borrowList,$accessories);
+        $id = parent::borrow($borrowList,$accessories);
         $this->sendMail($this->teacher);
+        return $id;
     }
     function sendMail($teacher){
         $member = Member::getMemberByThainame($teacher);
         Mail::to($member->email1)->send(new TestMail());
         $alert = new Alert();
-        $alert->borrowing_list_id = $this->borrow_list_id;
+        // $alert->borrowing_list_id = $this->borrow_list_id;
         $alert->log_id = $this->log_id;
         $alert->save();
-        echo $member->email1;
+        // echo $member->email1;
     }
     function display(){
         return $this->teacher;

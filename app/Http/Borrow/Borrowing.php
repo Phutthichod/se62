@@ -17,15 +17,13 @@ class Borrowing
         date_default_timezone_set('Asia/Bangkok');
         $this->status = $status;
         $this->description = $description;
+        $this->date = date('Y-m-d H:i:s');
         if($id!=null){
             $this->borrow_list_id = $id;
-            $this->date = date('Y-m-d H:i:s');
-
             $this->borrow = BorrowingList::find($this->borrow_list_id);
             $this->borrow->status = $status;
             $this->borrow->update = $this->date;
             $this->borrow->update();
-
             $this->log = $this->borrow->logs()->where("datetime_end",null)->first();
             $this->insertLog();
             $this->updateLog();
@@ -34,7 +32,7 @@ class Borrowing
     }
     function borrow($borrowList,$accessories){
         $this->teacher = $borrowList['teacher_name'];
-        print_r($borrowList);
+        // print_r($borrowList);
         $borrow = new BorrowingList();
         foreach($borrowList as $key=>$val){
             $borrow->$key = $val;
@@ -52,6 +50,7 @@ class Borrowing
             $borrowItem->save();
         }
         $this->borrow_list_id = $borrow->id;
+        $this->log = new LogBorrowing();
         $this->insertLog();
         return $this->borrow_list_id;
 
@@ -60,14 +59,14 @@ class Borrowing
 
     }
     function insertLog(){
-        $log = new LogBorrowing();
-        $log->title = $this->status;
+        // $log = new LogBorrowing();
+        $this->log->title = $this->status;
         $this->log->datetime_start = $this->date;
-        $log->borrowing_list_id = $this->borrow_list_id;
-        $log->description = $this->description;
-        $log->save();
-        $this->log_id = $log->id;
-        return $log->id;
+        $this->log->borrowing_list_id = $this->borrow_list_id;
+        $this->log->description = $this->description;
+        $this->log->save();
+        $this->log_id = $this->log->id;
+        return $this->log->id;
     }
     function updateLog(){
         $this->log->borrowing_list_id = $this->borrow_list_id;

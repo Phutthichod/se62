@@ -11,6 +11,7 @@ use App\http\Borrow\Borrowing;
 use App\BorrowingList;
 use App\BorrowingItem;
 use App\LogBorrowing;
+use App\Member;
 class BorrowingController extends Controller
 {
     function index(){
@@ -18,32 +19,48 @@ class BorrowingController extends Controller
         // echo $borrow->index();
     }
     function borrow(Request $req){
+        $accessories;
+        $period = 0;
+        foreach(json_decode($req->get('accessories'),true) as $val){
+            $accessories[$val['id']] = $val['number'];
+        }
         $permission = session()->get('member')['permission'];
         $user_id = session()->get('member')['id'];
         $description = $req->get("description");
         $projectName = $req->get("project_name");
-        $accessories = [1=>2,2=>15];
-        $period = $req->get("period");
-        $teacher = $req->get("teacher_name");;
+        $teacher = $req->get("teacher_name");
         $borrowList = [
             "user_id" => $user_id,
             "description" => $description,
             "project_name" => $projectName,
             "period" => $period,
-            "teacher_name" =>  $teacher
+            "teacher_name" => $teacher
         ];
-
+        $id;
         if($permission == "Student"){
+
             $personBorrow = new StudentBorrow("รออนุมัติ");
-            // $borrowList["status"] = "รออนุมัติ";
             $id = $personBorrow->borrow($borrowList,$accessories);
-            // $personBorrow->sendMail($teacher);
         }else{
             $personBorrow = new Borrow("รอรับ");
             $id = $personBorrow->borrow($borrowList,$accessories);
         }
 
+        echo $id;
 
+
+    }
+    function showBorrowAll(){
+        $user_id = session()->get('member')['id'];
+        $status = ['รออนุมัติ','รอรับ','ยกเลิก','ไม่อนุมัติ','ยืมแล้ว','คืนแล้ว',"ยืมเกิน"];
+        $borrowStatus = array();
+        $borrowList = BorrowingList::where("user_id",$user_id)->get();
+        foreach($status as $val){
+            $borrowStatus[$val] = BorrowingList::where("status",$val)->where("user_id",$user_id)->get();
+        }
+        // print_r($borrowStatus);
+        $teacherAllow = BorrowingList::where("teacher_name",session()->get('member')['thainame'])->get();
+        return view("/access_borrow",['borrowList'=>$borrowList,"borrowStatus"=>$borrowStatus,"teacherAllow"=>$teacherAllow]);
     }
     function cancel(){
         $id = request()->route("id");

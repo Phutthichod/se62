@@ -10,7 +10,8 @@
         <form class="form-inline search">
             <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
             <div class="dropdown show">
-                <a class="btn btn-outline-success dropdown-toggle mr-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="btn btn-outline-success dropdown-toggle mr-2" href="#" role="button" 
+                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   หมวดหมู่
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

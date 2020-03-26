@@ -15,7 +15,7 @@
             <div class="main">
                 @foreach($catagories as $item)
                     <a href="accessoriesUser/{{$item->id}}">
-                        <div class="card-body2"> 
+                        <div class="card-body"> 
                             <img class="img-category" src="{{asset($item->icon)}}" alt="">
                             <h6 class="card-title">{{$item->name}}</h6>
                         </div>

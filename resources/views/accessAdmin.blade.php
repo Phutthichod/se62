@@ -31,6 +31,7 @@
                             <button class="btn btn-danger btn-sm tt" data-toggle="tooltip" title="ไม่สามารยืมได้">
                             <i class="far fa-times-circle"></i></button>
                         <?php } ?>
+                        
 
                         <button 
                             data-id="{{$item->id}}"  data-key="{{$item->access_key}}" data-name="{{$item->name}}"
@@ -151,8 +152,8 @@
   
                         <div class="form-group">
                             <span style="float:left" for="insert-img" class="col-form-label">รูป :</span>
-                            <div class="show-img1">
-                                <img id="show-img1" src="" alt="">
+                            <div class="show-img">
+                                <img id="show-img2" src="" alt="">
                                 <input type="file" name="access-picture-edit"/>
                             </div>
                         </div>
@@ -210,7 +211,7 @@
             $('input[name=access-number-edit]').val(key)
             $('textarea[name=message-text-edit]').val(description)
             
-            $("#show-img1").attr("src",img)
+            $("#show-img2").attr("src",img)
         })
         $("input[name=access-picture-edit]").change(function(){
             let input = this
@@ -218,7 +219,7 @@
             var reader = new FileReader()
             reader.onload = function (e) {
                 img = e.target.result;
-                $("#show-img1").attr("src",img)
+                $("#show-img2").attr("src",img)
             }
             reader.readAsDataURL(input.files[0])
         }

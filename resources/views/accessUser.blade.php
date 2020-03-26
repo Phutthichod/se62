@@ -62,8 +62,8 @@
      
                         <div class="form-group">
                             <span style="float:left" for="insert-img" class="col-form-label">รูป :</span>
-                            <div class="show-img-detail">
-                                <img id="show-img-detail" src="" alt="">
+                            <div class="show-img">
+                                <img id="show-img" src="" alt="">
                             </div>
                         </div>
                         
@@ -128,7 +128,7 @@
             $('input[name=access-name]').val(name)
             $('input[name=access-number]').val(key)
             $('textarea[name=message-text]').val(description)
-            $("#show-img-detail").attr("src",img)
+            $("#show-img").attr("src",img)
         })
 
     });

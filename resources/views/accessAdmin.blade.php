@@ -31,7 +31,6 @@
                             <button class="btn btn-danger btn-sm tt" data-toggle="tooltip" title="ไม่สามารยืมได้">
                             <i class="far fa-times-circle"></i></button>
                         <?php } ?>
-                        
 
                         <button 
                             data-id="{{$item->id}}"  data-key="{{$item->access_key}}" data-name="{{$item->name}}"

@@ -11,20 +11,20 @@
     <div class="col-md-3 mb-5">
         <label for="year">ปี</label>
             <select class="custom-select d-block w-100" name="year" >
-                <option value=""></option>
-				<option value="">2557</option>
-				<option value="">2558</option>
-				<option value="">2559</option>
-				<option value="">2560</option>
-				<option value="">2561</option>
-				<option value="">2562</option>
-				<option value="">2563</option>
+                <option value=>ทุกปี</option>
+				<option value="2557">2557</option>
+				<option value="2558">2558</option>
+				<option value="2559">2559</option>
+				<option value="2560">2560</option>
+				<option value="2561">2561</option>
+				<option value="2562">2562</option>
+				<option value="2563">2563</option>
 			</select>
     </div>
     <div class="col-md-3 mb-5">
         <label for="month">เดือน</label>
             <select class="custom-select d-block w-100" name="month" >
-                <option value=""></option>
+                <option value>ทุกเดือน</option>
                 <option value="1">ม.ค.</option>
                 <option value="2">ก.พ.</option>
                 <option value="3">มี.ค.</option>
@@ -42,8 +42,10 @@
         <div class="col-md-3 mb-5">
         <label for="catagories">หมวดหมู่</label>
             <select class="custom-select d-block w-100" name="catagories" >
-              <option value="">Select</option>
-
+                <option value=>ทุกหมวดหมู่</option>
+                @foreach($catAll as $cat)
+              <option value={{$cat->id}}>{{$cat->name}}</option>
+                @endforeach
 			</select>
         </div>
         <div class="col-md-3 mb-5">
@@ -58,27 +60,33 @@
 
     </div>
         <div class="form-grop">
-				<button type="submit" name ="filter" id="filter" class="btn btn-info">Filter</button>
-				<button type="button" name ="filter" id="reset" class="btn btn-primary">Reset</button>
+				<button type="submit"  id="filter" class="btn btn-info">Filter</button>
+				<button type="reset"  id="reset" class="btn btn-primary">Reset</button>
 		</div>
         <br>
     </div>
 </form>
 <br>
 <br>
-    <H1 align="center"> ปี xxxx เดือน xxxx </H1>
+    {{-- <H1 align="center">มีการยืมทั้งหมด {{}}</H1> --}}
 <br>
     <div class="w3-white w3-text-grey w3-card-4">
       <div class="w3-container">
         <hr>
-        @foreach($staticAll as $item)
-        <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>อุปกรณ์</b></p>
-        <p>{{ $item['id'] }}</p>
+        <?php  $i;
+        for($i = sizeof($staticAll)-1 ; $i >= 0 ; $i--){ ?>
+        <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i><?= $staticAll[$i]['access']->name?> หมวดหมุ่ {{$staticAll[$i]['access']->catagories->name}}</b></p>
+        <p>ถูกยืม <?= $staticAll[$i]['sum'] ?> ครั้ง</p>
         <div class="w3-light-grey w3-round-xlarge w3-small">
-          <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:{{ $item['per'] }}%">{{ $item['per']  }}</div>
+          <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:<?= $staticAll[$i]['per'] ?>%"><?= $staticAll[$i]['per']  ?>%</div>
         </div><br>
-        @endforeach
+        <?php } ?>
       </div>
     </div><br>
-
+<script>
+    $('select[name=year]').val("<?php if(isset($_GET['year'])) echo $_GET['year']; ?>")
+    $('select[name=month]').val("<?php if(isset($_GET['month'])) echo $_GET['month']; ?>")
+    $('select[name=catagories]').val("<?php if(isset($_GET['catagories'])) echo $_GET['catagories']; ?>")
+    $('select[name=permission]').val("<?php if(isset($_GET['permission'])) echo $_GET['permission']; ?>")
+</script>
 @endsection

@@ -411,8 +411,8 @@
             </div>
 
             <div role="tabpanel" class="tab-pane fade" id="t_8">
-                @if(sizeof($borrowStatus["ยกเลิก"])>0)
-                @foreach($borrowStatus["ยกเลิก"] as $item)
+                @if(sizeof($teacherAllow)>0)
+                @foreach($teacherAllow as $item)
                 <div style="margin-bottom: 20px;">
                     <div class="card-header tab_list_product">
                         <strong class="set_object_left">หมายเลขรายการ{{$item->id}}</strong>
@@ -441,7 +441,7 @@
 
                     <div class="card-footer" style="text-align: right; background-color: white;">
                         <button type="button" class="btn btn-success">ดูข้อมูลการยืม</button>
-
+                        <button data-id={{$item->id}} type="button"  class="btn btn-danger borrowed">อนุมัติ</button>
                     </div>
                 </div>
                 @endforeach
@@ -510,5 +510,48 @@
                 }
             });
 })
+$(".borrowed").click(function(){
+        let id = $(this).attr("data-id")
+
+        swal({
+                title: "ยืนยันการให้ ???",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: 'get',
+                        url: `/borrowed/${id}`,
+                        data:{
+                            status:"รอรับ"
+                        },
+                        sync: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(data) {
+                            console.log(data)
+                            // alert(data)
+                            //   location.reload();
+                        },error: function(data) {
+                            console.log(data)
+                            //   location.reload();
+                        }
+                    });
+                    swal("กำลังดำเนินการให้รายการ", {
+                        icon: "success",
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    swal("ให้แล้ว!");
+
+                }
+            });
+        })
 </script>
 @endsection

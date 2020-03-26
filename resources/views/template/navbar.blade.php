@@ -71,8 +71,14 @@
             <span style="color: black;">อุปกรณ์</span>
         </a>
 
-        <!-- Nav Item - รายการยืม -->
-
+                <!-- Nav Item - รายการยืม -->
+        <!-- Nav Item - แจ้งเตือน -->
+        <a class="nav-item nav-link nav-icon" href="/incompleteBorrow" style="white-space: nowrap;">
+            <i class="fas fa-clipboard-list">
+            <sup><span class="badge badge-pill badge-danger">1</span></sup>
+            </i>
+            <span style="color: black;">รายการยืม-คืน</span>
+        </a>
         <a class="nav-item nav-link nav-icon" href="/history" style="white-space: nowrap;">
             <i class="fas fa-clipboard-list">
             <sup><span class="badge badge-pill badge-danger">1</span></sup>
@@ -80,13 +86,7 @@
             <span style="color: black;">ประวัติ</span>
         </a>
 
-        <!-- Nav Item - แจ้งเตือน -->
-        <a class="nav-item nav-link nav-icon" href="#" style="white-space: nowrap;">
-            <i class="fas fa-exclamation">
-            <sup><span class="badge badge-pill badge-danger">1</span></sup>
-            </i>
-            <span style="color: black;">ยืมเกิน</span>
-        </a>
+
         <a class="nav-item nav-link nav-icon" href="/static" style="white-space: nowrap;">
             <i class="fas fa-chart-bar">
             <sup><span class="badge badge-pill badge-danger">1</span></sup>

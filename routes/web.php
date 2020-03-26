@@ -12,17 +12,14 @@ Route::delete('/cancel/{id}', "BorrowingController@cancel");
 Route::get('/pass/{id}', "BorrowingController@pass");
 Route::get('/borrowed/{id}', "BorrowingController@borrowed");
 Route::get('/return/{id}', "BorrowingController@returnAccessories");
-Route::get('/history', "HistoryController@index");
+Route::get('/history', "AcessoriesHistoryController@index");
 Route::get('/static', "StaticController@index");
 Route::get('/catagory', "AccessoryController@index");
 Route::get('/chart', "ChartController@index");
-<<<<<<< HEAD
-Route::get('/productborrow', "ProductBorrowController@index");
-Route::get('/static/search', "StaticController@search");
-=======
 Route::get('/accessBorrow', "BorrowingController@showBorrowAll");
-Route::get('/static/search', "StaticController@static");
->>>>>>> 74e97dc2da6d693e3a19eeac09cfaff8165c5e3e
+Route::get('/static/search', "StaticController@search");
+Route::get('/incompleteBorrow', "BorrowingController@showBorrowStaffAll");
+
 // Route::get('/soa', function () {
 //     return view('soa.index');
 // });

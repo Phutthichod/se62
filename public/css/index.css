@@ -1,0 +1,53 @@
+.container{
+    width:100%;
+    padding: ;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 1rem;
+}
+
+.card-header{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.card-body{
+    left: 48px;
+    background-color: wheat;
+}
+
+.img-category{
+    height: 135px;
+    width: 175px;
+}
+
+.card-title{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: black;
+}
+
+h6 {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 175px;
+}
+
+a:link {
+    text-decoration:none;
+}
+
+#show-img{
+    width: 70px;
+}
+
+.bor{
+    margin-left: 130px;
+    width: 340px;
+    background-color:aliceblue;
+}
+
+

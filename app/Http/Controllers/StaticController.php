@@ -28,7 +28,13 @@ class StaticController extends Controller
                 $logAll[$key] = $item;
         }
         $All = $this->getStatic($logAll);
-        return view("static",array("staticAll"=>$All));
+        // print_r($All);
+        $catAll = Catagories::get();
+        return view("static",array("staticAll"=>$All,"catAll"=>$catAll));
+        // $b = $this->getStaticByBorrowed();
+        // foreach($accessByCat as $c){
+        //     echo $c->id."<br>";
+        // }
     }
 
     function search(Request $req){
@@ -47,7 +53,8 @@ class StaticController extends Controller
                 $logAll[$key] = $item;
         }
         $All = $this->getStatic($logAll);
-        return view("static",array("staticAll"=>$All)); 
+        $catAll = Catagories::get();
+        return view("static",array("staticAll"=>$All,"catAll"=>$catAll));
     }
     function getStaticByCatagories($catagories_id){
         $accessories = array();
@@ -62,7 +69,7 @@ class StaticController extends Controller
             }
         }
         else{
-            $BorrowingList = BorrowingList::get();
+            $BorrowingList = BorrowingItem::get();
             foreach($BorrowingList as $item){
                     $accessAll[$item->id] = $item;
             }
@@ -84,7 +91,7 @@ class StaticController extends Controller
             }
         }
         else{
-            $BorrowingList = BorrowingList::get();
+            $BorrowingList = BorrowingItem::get();
             foreach($BorrowingList as $item){
                     $accessAll[$item->id] = $item;
             }
@@ -139,15 +146,16 @@ class StaticController extends Controller
 
         foreach($borrowItems as $borrowItem){
             if (array_key_exists($borrowItem->access_id, $accessAll))
-                $accessAll[$borrowItem->access_id]++;
-                $borrowTotal++;
+                $accessAll[$borrowItem->access_id] += $borrowItem->number ;
+                $borrowTotal+=$borrowItem->number;
         }
 
         foreach($borrowItems as $borrowItem){
                 $accessAllPer[$borrowItem->access_id] = $accessAll[$borrowItem->access_id]/$borrowTotal*100;
         }
+        asort($accessAllPer);
         foreach($accessAllPer as $key=>$item){
-            $All[]=['id'=>$key ,'sum'=> $accessAll[$key] , 'per'=> $item];
+            $All[]=['id'=>$key ,'sum'=> $accessAll[$key] , 'per'=> $item ,'access'=>Accessories::find($key)];
         }
         return $All;
 

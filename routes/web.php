@@ -1,6 +1,8 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/login', "MemberController@login");
@@ -16,13 +18,10 @@ Route::get('/history', "HistoryController@index");
 Route::get('/static', "StaticController@index");
 Route::get('/catagory', "AccessoryController@index");
 Route::get('/chart', "ChartController@index");
-Route::get('/productborrow', "ProductBorrowController@index");
-Route::get('/static/search', "StaticController@search");
 Route::get('/accessBorrow', "BorrowingController@showBorrowAll");
-Route::get('/static/search', "StaticController@static");
-// Route::get('/soa', function () {
-//     return view('soa.index');
-// });
+Route::get('/static/search', "StaticController@search");
+Route::get('/incompleteBorrow', "BorrowingController@showBorrowStaffAll");
+
 Route::middleware(['web', 'index'])->group(function () {
 
     Route::get('/sample', "HistoryController@index");
@@ -30,11 +29,22 @@ Route::middleware(['web', 'index'])->group(function () {
     Route::get('/', "IndexController@index");
     Route::get('/{id}', "IndexController@index"); // change Mode (general,admin)
 
+    Route::get('accessoriesAdmin/{id}',"AccessoriesController@indexAdmin") ;
+    Route::get('accessoriesUser/{id}',"AccessoriesController@indexUser") ;
+
+    Route::post('/catagories/insert',"AccessoriesController@insertCatagories") ;
+    Route::post('/catagories/edit',"AccessoriesController@editCatagories") ;
+    Route::post('/catagories/delete',"AccessoriesController@deleteCatagories") ;
+
+    Route::post('/accessories/insert',"AccessoriesController@insertAccessories") ;
+    Route::post('/accessories/edit',"AccessoriesController@editAccessories") ;
+
     Route::group(['prefix' => 'profile'], function () {
         Route::get('me', "MemberController@showProfile");
         Route::post('updateIcon', "MemberController@updateIcon");
         Route::post('updateEmail', "MemberController@updateEmail");
     });
+
 });
 //Route::resource('sample','CustomSearchController');
 //Route::get('/historyList', "HistoryController@index");

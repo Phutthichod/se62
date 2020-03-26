@@ -17,7 +17,7 @@ class Catagories extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->string('icon',15)->default("img/avatar.png");
+            $table->string('icon',50)->default("img/defalt_equipment.png");
         });
     }
 

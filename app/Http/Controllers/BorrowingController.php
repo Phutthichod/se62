@@ -62,6 +62,18 @@ class BorrowingController extends Controller
         $teacherAllow = BorrowingList::where("teacher_name",session()->get('member')['thainame'])->get();
         return view("/access_borrow",['borrowList'=>$borrowList,"borrowStatus"=>$borrowStatus,"teacherAllow"=>$teacherAllow]);
     }
+    function showBorrowStaffAll(){
+        $user_id = session()->get('member')['id'];
+        $status = ['รออนุมัติ','รอรับ','ยืมแล้ว'];
+        $borrowStatus = array();
+        $borrowList = BorrowingList::get();
+        foreach($status as $val){
+            $borrowStatus[$val] = BorrowingList::where("status",$val)->get();
+        }
+        // print_r($borrowStatus);
+        // $teacherAllow = BorrowingList::where("teacher_name",session()->get('member')['thainame'])->get();
+        return view("/incomplete-borrow",['borrowList'=>$borrowList,"borrowStatus"=>$borrowStatus]);
+    }
     function cancel(){
         $id = request()->route("id");
         $borrow = new Borrowing("ยกเลิก",$id);
@@ -69,9 +81,10 @@ class BorrowingController extends Controller
     }
     function pass(Request $req){
         $id = request()->route("id");
-        $description = $req->get("description");
-        $status = "ไม่อนุมัติ";
-        $borrow = new TeacherBorrow($status,$id,$description);
+        // $description = $req->get("description");
+        //  $status = $req->get("status");
+        //  echo $status;
+        $borrow = new TeacherBorrow("รอรับ",$id);
         // $borrow->pass();
     }
     function returnAccessories(){
